@@ -118,7 +118,7 @@
           </div>
         </div>
       </div>
-      <form action="index.php?act=confirmOrder" method="post">
+      <form action="index.php?act=confirmOrder" class="row" method="post">
         <div class="row">
           <div class="col-lg-6">
 

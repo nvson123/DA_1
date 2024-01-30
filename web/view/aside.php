@@ -87,7 +87,7 @@
           <ul class="sub-menu">
             <li><a href="index.php?act=account">Account</a></li>
             <li><a href="index.php?act=login">Login</a></li>
-            <li><a href="account-register.html">Register</a></li>
+            <li><a href="index.php?act=dangky">Register</a></li>
             <!-- <li><a href="page-not-found.html">Page Not Found</a></li> -->
           </ul>
         </li>

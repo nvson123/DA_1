@@ -7,6 +7,7 @@ include "view/header.php";
 include "model/products.php";
 include "global.php";
 include "model/categories.php";
+include "model/account.php";
 
 if (!isset($_SESSION['mycart'])) {
     $_SESSION['mycart'] = [];
@@ -29,10 +30,19 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             include "view/account/login.php";
             break;
         case "dangky":
+            if (isset($_POST['dangky']) && ($_POST['dangky'])) {
+                $username = $_POST['username'];
+                $email = $_POST['email'];
+                $password = $_POST['password'];
+                $address = $_POST['address'];
+                $phone_number = $_POST['tel'];
+
+                insert_taikhoan($username, $email, $password, $address, $phone_number);
+                $thongbao = "Đã đăng ký thành công. Vui lòng đăng nhập để thực hiện chúc năng";
+                
+            }
             include "view/account/dangky.php";
             break;
-
-
         case "ctsp":
             if (isset($_GET['id']) && ($_GET['id'] > 0)) {
                 $product = loadone_product($_GET['id']);
@@ -97,7 +107,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
 
 
 
-        case "contact":
+        case "contact": 
             include "view/contact.php";
             break;
         case "compare":
