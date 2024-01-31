@@ -27,6 +27,24 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             include "view/account/account.php";
             break;
         case "login":
+            if (isset($_POST['login']) && ($_POST['login'])) {
+                $username = $_POST['username'];
+                $password = $_POST['password'];
+                $kq = checkuser($username, $password);
+                $role = $kq['role'];
+                if ($role == 1) {
+                    $_SESSION['role'] = $role;
+                    header('location:admin/index.php');
+                } else if (is_array($kq)) {
+                    $_SESSION['role'] = $role;
+                    $_SESSION['id'] = $kq['id'];
+                    $_SESSION['email'] = $kq['email'];
+                    header('location:index.php');
+                } else {
+                    // $thongbao = "Tài khoản không tổn tại. Vui lòng kiểm tra lại";
+                    header('location:index.php?act=login');
+                }
+            }
             include "view/account/login.php";
             break;
         case "dangky":
@@ -35,13 +53,26 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 $email = $_POST['email'];
                 $password = $_POST['password'];
                 $address = $_POST['address'];
-                $phone_number = $_POST['tel'];
+                $phone_number = $_POST['phone_number'];
 
                 insert_taikhoan($username, $email, $password, $address, $phone_number);
-                $thongbao = "Đã đăng ký thành công. Vui lòng đăng nhập để thực hiện chúc năng";
+                $thongbao = "Đã đăng ký thành công.";
                 
             }
             include "view/account/dangky.php";
+            break;
+        case 'quenmk':
+            if (isset($_POST['guiemail']) && ($_POST['guiemail'])) {
+                $email = $_POST['email'];
+                $checkemail = checkemail($email);
+                    //$thongbao="Cập nhật thành công";
+                if (is_array($checkemail)) {
+                    $thongbao = "Mật khẩu của bạn là: " . $checkemail['password'];
+                } else {
+                    $thongbao = "Email này không tồn tại";
+                }
+            }
+            include "view/account/quenmk.php";
             break;
         case "ctsp":
             if (isset($_GET['id']) && ($_GET['id'] > 0)) {
