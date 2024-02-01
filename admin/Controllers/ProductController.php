@@ -37,6 +37,8 @@ function addProduct()
 function addVariantPage()
 {
     $id = $_GET['id'];
+    // echo $id;
+    // die();
     $product = selectOneProduct($id);
     include_once "Views/Product/AddVariant.php";
 }
