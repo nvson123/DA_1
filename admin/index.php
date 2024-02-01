@@ -12,7 +12,7 @@ switch ($url){
         // {
         //     listOrderDate();
         // }
-        listOrder();
+        listRevenue();
         break;
     case 'list-user':
         listUser();

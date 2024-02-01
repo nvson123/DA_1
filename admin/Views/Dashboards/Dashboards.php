@@ -12,7 +12,14 @@
                                         Tổng sản phẩm
                                     </h5>
                                 </div>
-                                <span class="widget-numbers">3M</span>
+                                <span class="widget-numbers">
+                                    <?php
+                                        foreach ($totalProduct as $value)
+                                        {
+                                            echo $value['total_product'];
+                                        }
+                                    ?>
+                                </span>
                             </div>
                         </a>
                     </div>
@@ -25,7 +32,14 @@
                                         Tổng thành viên
                                     </h5>
                                 </div>
-                                <span class="widget-numbers">3M</span>
+                                <span class="widget-numbers">
+                                    <?php
+                                        foreach ($totalUser as $value)
+                                        {
+                                            echo $value['total_user'];
+                                        }
+                                    ?>
+                                </span>
                             </div>
                         </a>
                     </div>
@@ -34,10 +48,17 @@
                             <div class="card mb-3 widget-chart">
                                 <div class="widget-subheading fsize-1 pt-2 opacity-10 text-warning font-weight-bold">
                                     <h5>
-                                        Tổng doanh mục
+                                        Tổng danh mục
                                     </h5>
                                 </div>
-                                <span class="widget-numbers">3M</span>
+                                <span class="widget-numbers">
+                                    <?php
+                                        foreach ($totalCategory as $value)
+                                        {
+                                            echo $value['total_category'];
+                                        }
+                                    ?>
+                                </span>
                             </div>
                         </a>
                     </div>
@@ -49,7 +70,14 @@
                                         Tổng doanh mục
                                     </h5>
                                 </div>
-                                <span class="widget-numbers">3M</span>
+                                <span class="widget-numbers">
+                                    <?php
+                                        foreach ($totalCategory as $value)
+                                        {
+                                            echo $value['total_category'];
+                                        }
+                                    ?>
+                                </span>
                             </div>
                         </a>
                     </div>
@@ -66,27 +94,27 @@
                                     <button type="submit" class="btn btn-primary" name="listOrderDate" >Xem</button>
                                 </div>
                             </form>
-                            <p>Tổng doanh thu:
-                                <!-- <?php foreach ($orders as $order){ ?>
-                                <span><?=$order['total_money_date']?></span>
-                                <?php }?> -->
+                            <p>Tổng doanh thu trong 7 ngày qua:
+                                <?php foreach ($weekRevenue as $value){ ?>
+                                <span><?=$value['total_money']?></span>
+                                <?php }?>
                             </p>
                             <table class="revenue table table-hover">
                                 <thead>
                                     <th>#</th>
-                                    <th>Mã đơn hàng</th>
-                                    <th>Ngày tạo đơn</th>
+                                    <th>Ngày</th>
                                     <th>Doanh thu</th>
                                 </thead>
                                 <tbody>
-                                    <?php foreach($orders as $order){ ?>
+                                <?php foreach ($revenues as $key => $arrayValue ){ ?>
                                     <tr>
-                                        <td><?=$order['id']?></td>
-                                        <td><?=$order['id']?></td>
-                                        <td><?=$order['order_date']?></td>
-                                        <td><?=$order['total_money']?></td>
+                                        <td></td>
+                                        <td><?=$key?></td>
+                                        <?php foreach ($arrayValue as $item =>$value ) {?>
+                                            <td><?= $value['revenue']?></td>
+                                        <?php }?>    
                                     </tr>
-                                    <?php }?>
+                                <?php }?>
                                 </tbody>
                             </table>
                         </div>

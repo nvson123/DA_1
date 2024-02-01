@@ -39,8 +39,8 @@ function selectOneProduct($id)
     $sql = "SELECT product.id, product.image, product.name, category.name AS name_category, product.discount, product.price, product.description, product_variant.size, product_variant.color, product_variant.quantity
             FROM product
             INNER JOIN category ON product.category_id = category.id
-            INNER JOIN product_variant ON product.id = product_variant.product_id
-            WHERE product.id = '$id'";
+            LEFT JOIN product_variant ON product.id = product_variant.product_id
+            WHERE product.id = $id";
     // $sql = "SELECT * FROM product WHERE id = '$id'";
     return getData($sql);
 }
