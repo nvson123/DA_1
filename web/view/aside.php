@@ -82,7 +82,7 @@
         <li><a href="index.php">Home</a>
 
         </li>
-        <li><a href="about-us.html">About</a></li>
+        <li><a href="index.php?act=about">About</a></li>
         <li><a href="#">Pages</a>
           <ul class="sub-menu">
             <li><a href="index.php?act=account">Account</a></li>

@@ -35,12 +35,51 @@ return $tong;
 
 
 
-function insert_bill($name,$email,$address,$tel,$ngayDatHang,$tongDonHang){
+function insert_bill($id_user,$name,$email,$address,$tel,$tongDonHang){
 
 $sql = "INSERT INTO orders(id, user_id, fullname, email,
- phone_number, address, note, order_date, total_money) VALUES('','','$name','$email',$tel,'$address','','','$ngayDatHang',$tongDonHang)";
-pdo_execute($sql);
+ phone_number, address, note, total_money) VALUES('',$id_user,'$name','$email',$tel,'$address','',$tongDonHang)";
+return pdo_execute_return_lastestInsertID($sql);
+}
+function insert_cart($id_user,$id_pro,$image,$name,$price,$quantity,$tongDonHang,$id_bill){
+
+  $sql = "INSERT INTO `cart`( `id_user`, `id_product`, `image`, `name`, `price`, `soluong`, `thanhtien`, `id_order`)
+   VALUES($id_user,'$id_pro','$image','$name',$price,'$quantity','$tongDonHang',$id_bill)";
+  return pdo_execute($sql);
+  }
+;
+
+function loadone_order($id_bill)
+{
+    $sql = "select * from orders where id = $id_bill";
+    $result = pdo_query_one($sql);
+    return $result;
 }
 
-;
+function loadall_cart($id_bill)
+{
+    $sql = "select * from cart where id_order = $id_bill";
+    $result = pdo_query($sql);
+    return $result;
+}
+
+function loadall_bill($id_user){
+  $sql = "select * from orders where user_id = $id_user";
+  $billList = pdo_query($sql);
+  return $billList;
+};
+
+
+function get_ttdh($status){
+switch ($status) {
+  case 0:
+    $tt = "chờ xác nhận";
+    break;
+  
+  default:
+    # code...
+    break;
+}
+return $tt;
+}
 ?>

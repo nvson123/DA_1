@@ -127,12 +127,14 @@
             <!--== Start Billing Accordion ==-->
 
             <?php
-            if (isset($_SESSION['user'])) {
-              $name = $_SESSION['user']['address'];
-              $address = $_SESSION['user']['address'];
-              $email = $_SESSION['user']['email'];
-              $tel = $_SESSION['user']['tel'];
+            if (isset($_SESSION)) {
+              $id_user = $_SESSION['user_info']['id'];
+              $name = $_SESSION['user_info']['fullname'];
+              $address = $_SESSION['user_info']['address'];
+              $email = $_SESSION['user_info']['email'];
+              $tel = $_SESSION['user_info']['phone_number'];
             } else {
+              $id_user="";
               $name = "";
               $address = "";
               $email = "";
@@ -142,12 +144,13 @@
 
             ?>
             <div class="checkout-billing-details-wrap">
-              <h2 class="title">Billing details</h2>
+              <h2 class="title">Chi tiết đơn hàng</h2>
               <div class="billing-form-wrap">
 
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
+                      <input type="hidden" name="iduser" value="<?=$id_user?>">
                       <label for="f_name">Full Name <abbr class="required" title="required">*</abbr></label>
                       <input id="f_name" type="text" name="name" class="form-control" value="<?= $name ?>">
                     </div>
@@ -160,31 +163,13 @@
                   </div> -->
                   <div class="col-md-12">
                     <div class="form-group">
-                      <label for="com_name">Company name (optional)</label>
+                      <label for="com_name">Tên công ty/cơ quan (tùy chọn)</label>
                       <input id="com_name" name="com_name" type="text" class="form-control">
                     </div>
                   </div>
-                  <!-- <div class="col-md-12">
-                    <div class="form-group">
-                      <label for="country">Country <abbr class="required" title="required">*</abbr></label>
-                      <select id="country" class="form-control">
-                        <option>Bangladesh</option>
-                        <option>Afghanistan</option>
-                        <option>Albania</option>
-                        <option>Algeria</option>
-                        <option>Armenia</option>
-                        <option>India</option>
-                        <option>Pakistan</option>
-                        <option>England</option>
-                        <option>London</option>
-                        <option>London</option>
-                        <option>China</option>
-                      </select>
-                    </div>
-                  </div> -->
                   <div class="col-md-12">
                     <div class="form-group">
-                      <label for="street-address"> address <abbr class="required" title="required">*</abbr></label>
+                      <label for="street-address"> Địa chỉ <abbr class="required" title="required">*</abbr></label>
                       <input id="street-address" name="address" type="text" class="form-control"
                         placeholder="House number and street name" value="<?= $address ?>">
                     </div>
@@ -195,45 +180,23 @@
                         placeholder="Apartment, suite, unit etc. (optional)">
                     </div> -->
                   </div>
-                  <!-- <div class="col-md-12">
-                    <div class="form-group">
-                      <label for="town">Town / City <abbr class="required" title="required">*</abbr></label>
-                      <input id="town" type="text" class="form-control">
-                    </div>
-                  </div> -->
-                  <!-- <div class="col-md-12">
-                    <div class="form-group">
-                      <label for="district">District <abbr class="required" title="required">*</abbr></label>
-                      <select id="district" class="form-control">
-                        <option>Afghanistan</option>
-                        <option>Albania</option>
-                        <option>Algeria</option>
-                        <option>Armenia</option>
-                        <option>India</option>
-                        <option>Pakistan</option>
-                        <option>England</option>
-                        <option>London</option>
-                        <option>London</option>
-                        <option>China</option>
-                      </select>
-                    </div>
-                  </div> -->
+
                   <div class="col-md-12">
                     <div class="form-group">
-                      <label for="pz-code">Postcode / ZIP (optional)</label>
+                      <label for="pz-code">Mã bưu điện / ZIP (optional)</label>
                       <input id="pz-code" type="text" name="zip" class="form-control">
                     </div>
                   </div>
                   <div class="col-md-12">
                     <div class="form-group">
-                      <label for="phone" title="required">Phone *</label>
+                      <label for="phone" title="required">Số điện thoại *</label>
                       <input id="phone" required name="tel" type="text" class="form-control" value="<?= $tel ?>">
                     </div>
                   </div>
                   <div class="col-md-12">
                     <div class="form-group" data-margin-bottom="30">
                       <label for="email">Email address <abbr class="required" title="required">*</abbr></label>
-                      <input id="email" type="text" name="mail" class="form-control" value="<?= $email ?>">
+                      <input id="email" type="text" name="email" class="form-control" value="<?= $email ?>">
                     </div>
                   </div>
                   <div id="CheckoutBillingAccordion" class="col-md-12">
@@ -241,13 +204,13 @@
                       data-bs-target="#CheckoutOne" aria-expanded="false" role="toolbar">
                       <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input visually-hidden" id="CreateAccount">
-                        <label class="custom-control-label" for="CreateAccount">Create an account?</label>
+                        <label class="custom-control-label" for="CreateAccount">Tạo tài khoản?</label>
                       </div>
                     </div>
                     <div id="CheckoutOne" class="collapse" data-margin-top="30"
                       data-bs-parent="#CheckoutBillingAccordion">
                       <div class="form-group">
-                        <label for="password">Create account password <abbr class="required"
+                        <label for="password">Tạo mật khẩu tài khoản <abbr class="required"
                             title="required">*</abbr></label>
                         <input id="password" type="password" class="form-control" placeholder="Password">
                       </div>
@@ -389,7 +352,7 @@
                       $xoasp = "index.php?act=delCart&idCart=$i";
                       echo '
                     <tr class="cart-item">
-                    <input type="hidden" name="id_products"value="'.$cart[0].'">
+                    <input type="hidden" name="id_products"value="' . $cart[0] . '">
                     <td class="product-img"><img src="' . $hinh . '" width="60" height="80" alt="Image-HasTech"></td>
                     <td class="product-name">' . $cart[1] . ' <span class="product-quantity">× ' . $cart[4] . '</span></td>
                     <td class="product-total">' . $cart[5] . '</td>
@@ -417,7 +380,7 @@
                     <tr class="shipping">
                       <th>Vận chuyển:</th>
                       <td> $
-                        <?php echo $ship = 30; ?>
+                        <?php echo $ship = 0; ?>
                       </td>
                     </tr>
                     <tr class="order-total">
@@ -456,6 +419,26 @@
                     </div>
                   </div> -->
                     <div class="card">
+                      <label for="pttt" class="card-header" id="check_payments3">
+                        <input type="radio" name="pttt" value="tienmat"  data-bs-toggle="collapse" data-bs-target="#itemTwo" aria-controls="itemTwo"
+                        aria-expanded="false" >
+                     Thanh toán khi nhận hàng </label>
+                      <!-- <div class="card-header" id="check_payments3">
+                        <h5 class="title" data-bs-toggle="collapse" data-bs-target="#itemTwo" aria-controls="itemTwo"
+                          aria-expanded="false">Thanh toán khi nhận hàng</h5>
+                      </div> -->
+                      <div id="itemTwo" class="collapse" aria-labelledby="check_payments3"
+                        data-bs-parent="#PaymentMethodAccordion">
+                        <div class="card-body">
+                          <p>Nhận hàng và thành toán bằng tiền mặt.</p>
+                        </div>
+                      </div>
+                    </div>
+
+
+
+
+                    <!-- <div class="card">
                       <div class="card-header" id="check_payments3">
                         <h5 class="title" data-bs-toggle="collapse" data-bs-target="#itemThree" aria-controls="itemTwo"
                           aria-expanded="false">Thanh toán khi nhận hàng</h5>
@@ -466,14 +449,14 @@
                           <p>Nhận hàng và thành toán bằng tiền mặt.</p>
                         </div>
                       </div>
-                    </div>
+                    </div> -->
                     <div class="card">
                       <div class="card-header" id="check_payments4">
-                        <h5 class="title" data-bs-toggle="collapse" data-bs-target="#itemFour" aria-controls="itemTwo"
+                        <h5 class="title" data-bs-toggle="collapse" data-bs-target="#itemThree" aria-controls="itemTwo"
                           aria-expanded="false">PayPal Express Checkout <img src="assets/img/photos/paypal2.webp"
                             width="40" height="26" alt="Image-HasTech"></h5>
                       </div>
-                      <div id="itemFour" class="collapse" aria-labelledby="check_payments4"
+                      <div id="itemThree" class="collapse" aria-labelledby="check_payments4"
                         data-bs-parent="#PaymentMethodAccordion">
                         <div class="card-body">
                           <p>Thanh toán bằng PayPal. Bạn phải có tài khoản PayPal để thanh toán.</p>
