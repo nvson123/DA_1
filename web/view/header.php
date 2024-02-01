@@ -90,9 +90,9 @@
               </div>
               <div class="header-middle-align-center">
                 <div class="header-search-area">
-                  <form class="header-searchbox">
-                    <input type="search" class="form-control" placeholder="Search">
-                    <button class="btn-submit" type="submit"><i class="pe-7s-search"></i></button>
+                  <form action="index.php?act=shop" method="post" class="header-searchbox">
+                    <input type="text" name="kyw" class="form-control" placeholder="Searcht">
+                    <button class="btn-submit" type="submit" name="timkiem"><i class="pe-7s-search"></i></button>
                   </form>
                 </div>
               </div>

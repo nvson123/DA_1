@@ -172,10 +172,10 @@
       
         <?php
         foreach ($loadProductAll as $sp) {
-
+          
           extract($sp);
           $hinh = $img_path . $image;
-          $linkSP = "index.php?act=ctsp&id=" . $id;
+          $linkSP = "index.php?act=sanpham&id=" . $id;
           echo
 
             '<div class="col-sm-6 col-lg-3">
@@ -200,6 +200,7 @@
                 </div>
                 <a class="banner-link-overlay" href="' . $linkSP . '"></a>
               </div>
+              
               <div class="product-info">
                 <div class="category">
                   <ul>

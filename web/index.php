@@ -20,7 +20,25 @@ $loadProductAll = loadall_products_home();
 if (isset($_GET['act']) && ($_GET['act'] != "")) {
     $act = $_GET['act'];
     switch ($act) {
+            
+            
         case "shop":
+            //Tìm kiếm sản phẩm
+            if (isset($_POST['kyw']) && ($_POST['kyw'] != "")) {
+                $kyw = $_POST['kyw'];
+            } else {
+                $kyw = "";
+            }
+            //Load danh mục sản phẩm
+            if (isset($_GET['category_id']) && ($_GET['category_id'] > 0)) {
+                $category_id = $_GET['category_id'];
+            } else {
+                $category_id = 0;
+            }
+            $loadProductAll = loadall_product($kyw, $category_id);
+            
+            // $tendm = load_ten_dm($iddm);
+    
             include "view/products/shop.php";
             break;
         case "account":
@@ -34,11 +52,11 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 $role = $kq['role'];
                 if ($role == 1) {
                     $_SESSION['role'] = $role;
-                    header('location:admin/index.php');
+                    header('location:../admin/index.php');
                 } else if (is_array($kq)) {
                     $_SESSION['role'] = $role;
                     $_SESSION['id'] = $kq['id'];
-                    $_SESSION['email'] = $kq['email'];
+                    $_SESSION['user'] = $kq['user'];
                     header('location:index.php');
                 } else {
                     // $thongbao = "Tài khoản không tổn tại. Vui lòng kiểm tra lại";
@@ -135,9 +153,6 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
 
             }
             break;
-
-
-
         case "contact": 
             include "view/contact.php";
             break;
@@ -157,7 +172,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
         case "blog":
             include "view/blog/blog.php";
             break;
-
+        
     }
 } else {
 
