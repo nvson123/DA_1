@@ -24,7 +24,14 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             include "view/products/shop.php";
             break;
         case "account":
-            $listBill = loadall_bill($_SESSION['user_info']['id']); 
+            if (!isset($_SESSION['user_info'])) {
+                include "view/account/login.php";
+               
+         }else{
+            $listBill = loadall_bill($_SESSION['user_info']['id']);
+             
+         }
+            
             include "view/account/account.php";
             break;
         case "login":
@@ -35,7 +42,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 $role = $kq['role'];
                 if ($role == 1) {
                     $_SESSION['role'] = $role;
-                    header('location:admin/index.php');
+                    header('location:../admin/index.php');
                 } else if (is_array($kq)) {
                     $_SESSION['role'] = $role;
                     $_SESSION['user_info'] = array(
@@ -67,6 +74,16 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
 
             }
             include "view/account/dangky.php";
+            break;
+        case "logout":
+            if (isset($_SESSION['user_info'])) {
+                session_destroy();
+                header('Location: index.php ');
+            }else{
+                include "view/products/shop.php";
+            }
+
+            
             break;
         case 'quenmk':
             if (isset($_POST['guiemail']) && ($_POST['guiemail'])) {
@@ -132,7 +149,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             //tạo đơn hàng
             if (isset($_POST['order']) && ($_POST['order'])) {
                 // $id_pro = $_POST('id_products');
-              
+
                 $id_user = $_POST['iduser'];
                 $name = $_POST['name'];
                 $email = $_POST['email'];

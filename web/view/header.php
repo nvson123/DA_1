@@ -70,12 +70,16 @@
                         </li>
                         <li class="email"><i class="fa fa-envelope"></i><a
                             href="mailto://demo@example.com">demo@example.com</a></li>
-                        <li class="account"><i class="fa fa-user"></i><a href="index.php?act=account">Hello
+                        <li class="account"><i class="fa fa-user"></i><a href="index.php?act=account">  
                             <?php
-                            if (isset($_SESSION['user_info'])) { ?>
-                              <?= $_SESSION['user_info']['username'] ?>
-                            <?php } else {
-                              echo "Account";
+
+                            
+                            if (!isset($_SESSION['user_info'])) { 
+                               echo "Account";
+                               
+                               ?>
+                            <?php }else {
+                             echo ($_SESSION['user_info']['username']);
                             }
                             ;
 

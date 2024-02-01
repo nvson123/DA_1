@@ -43,7 +43,7 @@
                     <button class="nav-link" id="account-info-tab" data-bs-toggle="tab" data-bs-target="#account-info"
                       type="button" role="tab" aria-controls="account-info" aria-selected="false">Account
                       Details</button>
-                    <button class="nav-link" onclick="window.location.href='account-login.html'"
+                    <button class="nav-link" onclick="window.location.href='index.php?act=logout'"
                       type="button">Logout</button>
                   </div>
                 </nav>

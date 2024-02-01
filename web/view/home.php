@@ -128,7 +128,7 @@
                   <h4 class="price">From $90.00</h4>
                 </div>
               </div>
-              <div class="product-collection-thumb" data-bg-img="assets/img/shop/collection/2.webp"></div>
+              <div class="product-collection-thumb" data-bg-img="../assets/img/shop/collection/2.webp"></div>
               <a class="banner-link-overlay" href="shop.html"></a>
             </div>
           </div>
