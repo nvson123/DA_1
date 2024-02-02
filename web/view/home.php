@@ -18,7 +18,7 @@
                           <p class="desc">Up To 30% Off All Shoes & Products</p>
                         </div>
                         <div class="btn-box">
-                          <a class="btn-slider" href="shop.html">Shop Now</a>
+                          <a class="btn-slider" href="index.php?act=shop">Shop Now</a>
                         </div>
                       </div>
                     </div>
@@ -128,7 +128,7 @@
                   <h4 class="price">From $90.00</h4>
                 </div>
               </div>
-              <div class="product-collection-thumb" data-bg-img="../assets/img/shop/collection/2.webp"></div>
+              <div class="product-collection-thumb" data-bg-img="assets/img/shop/collection/2.webp"></div>
               <a class="banner-link-overlay" href="shop.html"></a>
             </div>
           </div>
