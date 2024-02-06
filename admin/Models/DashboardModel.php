@@ -1,23 +1,19 @@
 <?php
 require_once "BaseModel.php";
 
-<<<<<<< HEAD
 function selectAllOrder()
 {
     $sql ="SELECT * FROM orders";
-=======
+}
 function selectAllRevenue($dateNow)
 {
     $sql ="SELECT SUM(total_money) AS revenue FROM orders
             WHERE DATE(order_date) = '$dateNow'";
->>>>>>> 6bad0bba2a7b6dad01ee742afb600fa92f748f6d
     // if(isset($startDate) && isset($endDate))
     // {
     //     $sql.=" WHERE order_date BETWEEN $startDate AND $endDate";
     // }
     return getData($sql);
-<<<<<<< HEAD
-=======
 }
 
 function selectWeekRevenue($startDate, $endDate)
@@ -41,5 +37,4 @@ function countUser()
 {
     $sql ="SELECT COUNT(id) AS total_user FROM user";
     return getData($sql);
->>>>>>> 6bad0bba2a7b6dad01ee742afb600fa92f748f6d
 }

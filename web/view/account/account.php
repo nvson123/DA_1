@@ -1,29 +1,29 @@
 <main class="main-content">
-    <!--== Start Page Header Area Wrapper ==-->
-    <div class="page-header-area" data-bg-img=".../assets/img/photos/bg3.webp">
-      <div class="container pt--0 pb--0">
-        <div class="row">
-          <div class="col-12">
-            <div class="page-header-content">
-              <h2 class="title" data-aos="fade-down" data-aos-duration="1000">Account</h2>
-              <nav class="breadcrumb-area" data-aos="fade-down" data-aos-duration="1200">
-                <ul class="breadcrumb">
-                  <li><a href="index.html">Home</a></li>
-                  <li class="breadcrumb-sep">//</li>
-                  <li>Account</li>
-                </ul>
-              </nav>
-            </div>
+  <!--== Start Page Header Area Wrapper ==-->
+  <div class="page-header-area" data-bg-img=".../assets/img/photos/bg3.webp">
+    <div class="container pt--0 pb--0">
+      <div class="row">
+        <div class="col-12">
+          <div class="page-header-content">
+            <h2 class="title" data-aos="fade-down" data-aos-duration="1000">Account</h2>
+            <nav class="breadcrumb-area" data-aos="fade-down" data-aos-duration="1200">
+              <ul class="breadcrumb">
+                <li><a href="index.html">Home</a></li>
+                <li class="breadcrumb-sep">//</li>
+                <li>Account</li>
+              </ul>
+            </nav>
           </div>
         </div>
       </div>
     </div>
-    <!--== End Page Header Area Wrapper ==-->
+  </div>
+  <!--== End Page Header Area Wrapper ==-->
 
-    <!--== Start My Account Wrapper ==-->
-    <section class="my-account-area">
-      <div class="container pt--0 pb--0">
-        <div class="row">
+  <!--== Start My Account Wrapper ==-->
+  <section class="my-account-area">
+    <div class="container pt--0 pb--0">
+      <div class="row">
         <div class="col-lg-12">
           <div class="myaccount-page-wrapper">
             <div class="row">
@@ -31,12 +31,20 @@
                 <nav>
                   <div class="myaccount-tab-menu nav nav-tabs" id="nav-tab" role="tablist">
                     <!-- <button class="nav-link active" id="dashboad-tab" data-bs-toggle="tab" data-bs-target="#dashboad" type="button" role="tab" aria-controls="dashboad" aria-selected="true">Dashboard</button> -->
-                    <button class="nav-link" id="orders-tab" data-bs-toggle="tab" data-bs-target="#orders" type="button" role="tab" aria-controls="orders" aria-selected="false"> Orders</button>
-                    <button class="nav-link" id="download-tab" data-bs-toggle="tab" data-bs-target="#download" type="button" role="tab" aria-controls="download" aria-selected="false">Download</button>
-                    <button class="nav-link" id="payment-method-tab" data-bs-toggle="tab" data-bs-target="#payment-method" type="button" role="tab" aria-controls="payment-method" aria-selected="false">Payment Method</button>
-                    <button class="nav-link" id="address-edit-tab" data-bs-toggle="tab" data-bs-target="#address-edit" type="button" role="tab" aria-controls="address-edit" aria-selected="false">address</button>
-                    <button class="nav-link" id="account-info-tab" data-bs-toggle="tab" data-bs-target="#account-info" type="button" role="tab" aria-controls="account-info" aria-selected="false">Account Details</button>
-                    <button class="nav-link" onclick="window.location.href='account-login.html'" type="button">Logout</button>
+                    <button class="nav-link" id="orders-tab" data-bs-toggle="tab" data-bs-target="#orders" type="button"
+                      role="tab" aria-controls="orders" aria-selected="false"> Orders</button>
+                    <button class="nav-link" id="download-tab" data-bs-toggle="tab" data-bs-target="#download"
+                      type="button" role="tab" aria-controls="download" aria-selected="false">Download</button>
+                    <button class="nav-link" id="payment-method-tab" data-bs-toggle="tab"
+                      data-bs-target="#payment-method" type="button" role="tab" aria-controls="payment-method"
+                      aria-selected="false">Payment Method</button>
+                    <button class="nav-link" id="address-edit-tab" data-bs-toggle="tab" data-bs-target="#address-edit"
+                      type="button" role="tab" aria-controls="address-edit" aria-selected="false">address</button>
+                    <button class="nav-link" id="account-info-tab" data-bs-toggle="tab" data-bs-target="#account-info"
+                      type="button" role="tab" aria-controls="account-info" aria-selected="false">Account
+                      Details</button>
+                    <button class="nav-link" onclick="window.location.href='index.php?act=logout'"
+                      type="button">Logout</button>
                   </div>
                 </nav>
               </div>
@@ -59,21 +67,32 @@
                           <thead class="thead-light">
                             <tr>
                               <th>Order</th>
-                              <th>Date</th>
-                              <th>Status</th>
-                              <th>Total</th>
+                              <th>Ngày mua hàng</th>
+                              <th>Trạng thái</th>
+                              <th>Tổng tiền</th>
                               <th>Action</th>
                             </tr>
                           </thead>
                           <tbody>
-                            <tr>
-                              <td>1</td>
-                              <td>Aug 22, 2022</td>
-                              <td>Pending</td>
-                              <td>$3000</td>
-                              <td><a href="shop-cart.html" class="check-btn sqr-btn ">View</a></td>
+                          
+                            <?php
+                            if (is_array($listBill)) {
+                              foreach ($listBill as $bill) {
+                                extract($bill);
+                                $ttdh =get_ttdh($status);
+                                echo '
+                                <tr>
+                              <td>'.$bill['id'].'</td>
+                              <td>'.$order_date.'</td>
+                              <td>'.$ttdh.'</td>
+                              <td>'.$total_money.'</td>
+                              <td><a href="index.php?act=myBill&idBill='.$bill['id'].'" class="check-btn sqr-btn ">View</a></td>
                             </tr>
-                            <tr>
+                                ';
+                              }
+                            }
+                            ?>
+                            <!-- <tr>
                               <td>2</td>
                               <td>July 22, 2022</td>
                               <td>Approved</td>
@@ -86,7 +105,7 @@
                               <td>On Hold</td>
                               <td>$990</td>
                               <td><a href="shop-cart.html" class="check-btn sqr-btn ">View</a></td>
-                            </tr>
+                            </tr> -->
                           </tbody>
                         </table>
                       </div>
@@ -110,13 +129,15 @@
                               <td>Haven - Free Real Estate PSD Template</td>
                               <td>Aug 22, 2022</td>
                               <td>Yes</td>
-                              <td><a href="#/" class="check-btn sqr-btn"><i class="fa fa-cloud-download"></i> Download File</a></td>
+                              <td><a href="#/" class="check-btn sqr-btn"><i class="fa fa-cloud-download"></i> Download
+                                  File</a></td>
                             </tr>
                             <tr>
                               <td>HasTech - Profolio Business Template</td>
                               <td>Sep 12, 2022</td>
                               <td>Never</td>
-                              <td><a href="#/" class="check-btn sqr-btn"><i class="fa fa-cloud-download"></i> Download File</a></td>
+                              <td><a href="#/" class="check-btn sqr-btn"><i class="fa fa-cloud-download"></i> Download
+                                  File</a></td>
                             </tr>
                           </tbody>
                         </table>
@@ -202,7 +223,7 @@
           </div>
         </div>
       </div>
-      </div>
-    </section>
-    <!--== End My Account Wrapper ==-->
-  </main>
+    </div>
+  </section>
+  <!--== End My Account Wrapper ==-->
+</main>

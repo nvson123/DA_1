@@ -42,6 +42,14 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             include "view/products/shop.php";
             break;
         case "account":
+            if (!isset($_SESSION['user_info'])) {
+                include "view/account/login.php";
+               
+         }else{
+            $listBill = loadall_bill($_SESSION['user_info']['id']);
+             
+         }
+            
             include "view/account/account.php";
             break;
         case "login":
@@ -55,8 +63,19 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                     header('location:../admin/index.php');
                 } else if (is_array($kq)) {
                     $_SESSION['role'] = $role;
+<<<<<<< HEAD
                     $_SESSION['id'] = $kq['id'];
                     $_SESSION['user'] = $kq['user'];
+=======
+                    $_SESSION['user_info'] = array(
+                        'id' => $kq['id'],
+                        'username' => $kq['username'],
+                        'fullname' => $kq['fullname'],
+                        'address' => $kq['address'],
+                        'email' => $kq['email'],
+                        'phone_number' => $kq['phone_number']
+                    );
+>>>>>>> eadad380849e9e65359d29d527a20454ec686f61
                     header('location:index.php');
                 } else {
                     // $thongbao = "Tài khoản không tổn tại. Vui lòng kiểm tra lại";
@@ -75,15 +94,25 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
 
                 insert_taikhoan($username, $email, $password, $address, $phone_number);
                 $thongbao = "Đã đăng ký thành công.";
-                
+
             }
             include "view/account/dangky.php";
+            break;
+        case "logout":
+            if (isset($_SESSION['user_info'])) {
+                session_destroy();
+                header('Location: index.php ');
+            }else{
+                include "view/products/shop.php";
+            }
+
+            
             break;
         case 'quenmk':
             if (isset($_POST['guiemail']) && ($_POST['guiemail'])) {
                 $email = $_POST['email'];
                 $checkemail = checkemail($email);
-                    //$thongbao="Cập nhật thành công";
+                //$thongbao="Cập nhật thành công";
                 if (is_array($checkemail)) {
                     $thongbao = "Mật khẩu của bạn là: " . $checkemail['password'];
                 } else {
@@ -141,19 +170,44 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             break;
         case "confirmOrder":
             //tạo đơn hàng
-            if (isset($_POST['order']) && ($_POST['order'])){
-                $id_pro = $_POST('id_products');
+            if (isset($_POST['order']) && ($_POST['order'])) {
+                // $id_pro = $_POST('id_products');
+
+                $id_user = $_POST['iduser'];
                 $name = $_POST['name'];
                 $email = $_POST['email'];
                 $tel = $_POST['tel'];
                 $address = $_POST['address'];
-                $ngayDatHang=date('h:i:sa d/m/Y');
-                $tongDonHang = $tongDonHang();
+                $ngayDatHang = date('h:i:sa d/m/Y');
+                $tongDonHang = tongTien();
+                $id_bill = insert_bill($id_user, $name, $email, $address, $tel, $tongDonHang);
+                //test thêm giỏ hàng vào csdl
+
+                foreach ($_SESSION['mycart'] as $cart) {
+                    insert_cart($_SESSION['user_info']['id'], $cart[0], $cart[2], $cart[1], $cart[3], $cart[4], $cart[5], $id_bill);
+                }
+                $_SESSION['mycart'] = [];
+            }
+            $listOrder = loadone_order($id_bill);
+            $billCT = loadall_cart($id_bill);
+            include "view/checkout/bill.php";
+            break;
+<<<<<<< HEAD
+        case "contact": 
+=======
 
 
+        case "myBill":
+            if (isset($_GET['idBill']) && ($_GET['idBill'] > 0)) {
+                $listOrder = loadone_order($_GET['idBill']);
+                $billCT = loadall_cart($_GET['idBill']);
+                include "view/account/myBill.php";
+            } else {
+                include "view/account/account.php";
             }
             break;
-        case "contact": 
+        case "contact":
+>>>>>>> eadad380849e9e65359d29d527a20454ec686f61
             include "view/contact.php";
             break;
         case "compare":

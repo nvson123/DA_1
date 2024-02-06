@@ -1,14 +1,12 @@
 <?php
 require_once "Models/DashboardModel.php";
 
-<<<<<<< HEAD
 function listOrder()
 {   
     $orders = selectAllOrder();
     include_once "Views/Dashboards/Dashboards.php";
 }
 
-=======
 function listRevenue()
 {   
     $dateNow = new DateTime();
@@ -27,7 +25,6 @@ function listRevenue()
     
     include_once "Views/Dashboards/Dashboards.php";
 }
->>>>>>> 6bad0bba2a7b6dad01ee742afb600fa92f748f6d
 // function listOrderDate()
 // {
 //     $startDate = $_POST['startDate'];
