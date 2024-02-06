@@ -1,6 +1,12 @@
 <?php
 require_once "Models/DashboardModel.php";
 
+function listOrder()
+{   
+    $orders = selectAllOrder();
+    include_once "Views/Dashboards/Dashboards.php";
+}
+
 function listRevenue()
 {   
     $dateNow = new DateTime();

@@ -91,11 +91,7 @@
               </div>
               <div class="product-info">
                 <div class="category">
-                  <ul>
-                    <li><a href="shop.html">' . $category_name . '</a></li>
-                    <li class="sep">/</li>
-                    
-                  </ul>
+                  
                 </div>
                 <h4 class="title"><a href="single-product.html">' . $name . '</a></h4>
                   <div class="prices">
