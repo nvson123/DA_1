@@ -1,6 +1,6 @@
 <div class="main-content">
                 <h3 class="title-page">
-                    Danh mục
+                    Product
                 </h3>
                 <div class="d-flex justify-content-end">
                     <a href="index.php?url=add-product" class="btn btn-primary mb-2">Thêm danh mục</a>

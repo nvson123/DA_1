@@ -1,6 +1,6 @@
 <div class="main-content">
                 <h3 class="title-page">
-                    Danh mục
+                    Category
                 </h3>
                 <div class="d-flex justify-content-end">
                     <a href="index.php?url=add-category" class="btn btn-primary mb-2">Thêm danh mục</a>

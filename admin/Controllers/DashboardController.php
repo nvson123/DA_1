@@ -10,14 +10,14 @@ function listOrder()
 function listRevenue()
 {   
     $dateNow = new DateTime();
+    $endDate = $dateNow->format('Y-m-d');
     $revenues = array();
     for ($i = 0; $i < 7; $i++) {
         $resutl=$dateNow->format('Y-m-d');
         $revenues[$resutl] = selectAllRevenue($resutl);
         $resutl = $dateNow->modify('-1 day');
     }
-    $endDate = $dateNow->format('Y-m-d');
-    $startDate = $dateNow->modify('-7 day')->format('Y-m-d');
+    $startDate = $dateNow->modify('+1 day')->format('Y-m-d');
     $totalCategory = countCategory();
     $totalProduct = countProduct();
     $totalUser = countUser();
