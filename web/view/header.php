@@ -108,7 +108,6 @@
           </div>
         </div>
       </div>
-<<<<<<< HEAD
     </div>
     <div class="header-middle">
       <div class="container pt--0 pb--0">
@@ -139,7 +138,6 @@
                   <div class="shopping-wishlist">
                     <a class="shopping-wishlist-btn" href="index.php?act=wishlist">
                       <i class="pe-7s-like icon"></i>
-=======
       <div class="header-middle">
         <div class="container pt--0 pb--0">
           <div class="row align-items-center">
@@ -150,7 +148,7 @@
                     <a href="index.php">
                       <img class="logo-main" src="assets/img/shoes.webp" width="131" height="34" alt="Logo" />
                       <img class="logo-light" src="assets/img/logo-light.webp" width="131" height="34" alt="Logo" />
->>>>>>> eadad380849e9e65359d29d527a20454ec686f61
+
                     </a>
                   </div>
                 </div>
