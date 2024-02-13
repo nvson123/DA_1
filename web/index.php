@@ -63,10 +63,8 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                     header('location:../admin/index.php');
                 } else if (is_array($kq)) {
                     $_SESSION['role'] = $role;
-<<<<<<< HEAD
                     $_SESSION['id'] = $kq['id'];
                     $_SESSION['user'] = $kq['user'];
-=======
                     $_SESSION['user_info'] = array(
                         'id' => $kq['id'],
                         'username' => $kq['username'],
@@ -75,7 +73,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                         'email' => $kq['email'],
                         'phone_number' => $kq['phone_number']
                     );
->>>>>>> eadad380849e9e65359d29d527a20454ec686f61
+
                     header('location:index.php');
                 } else {
                     // $thongbao = "Tài khoản không tổn tại. Vui lòng kiểm tra lại";
@@ -193,11 +191,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             $billCT = loadall_cart($id_bill);
             include "view/checkout/bill.php";
             break;
-<<<<<<< HEAD
-        case "contact": 
-=======
-
-
+            
         case "myBill":
             if (isset($_GET['idBill']) && ($_GET['idBill'] > 0)) {
                 $listOrder = loadone_order($_GET['idBill']);
@@ -208,7 +202,6 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             }
             break;
         case "contact":
->>>>>>> eadad380849e9e65359d29d527a20454ec686f61
             include "view/contact.php";
             break;
         case "compare":
