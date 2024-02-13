@@ -108,6 +108,38 @@
           </div>
         </div>
       </div>
+<<<<<<< HEAD
+    </div>
+    <div class="header-middle">
+      <div class="container pt--0 pb--0">
+        <div class="row align-items-center">
+          <div class="col-12">
+            <div class="header-middle-align">
+              <div class="header-middle-align-start">
+                <div class="header-logo-area">
+                  <a href="index.php">
+                    <img class="logo-main" src="assets/img/shoes.webp" width="131" height="34" alt="Logo" />
+                    <img class="logo-light" src="assets/img/logo-light.webp" width="131" height="34" alt="Logo" />
+                  </a>
+                </div>
+              </div>
+              <div class="header-middle-align-center">
+                <div class="header-search-area">
+                  <form action="index.php?act=shop" method="post" class="header-searchbox">
+                    <input type="text" name="kyw" class="form-control" placeholder="Searcht">
+                    <button class="btn-submit" type="submit" name="timkiem"><i class="pe-7s-search"></i></button>
+                  </form>
+                </div>
+              </div>
+              <div class="header-middle-align-end">
+                <div class="header-action-area">
+                  <div class="shopping-search">
+                    <button class="shopping-search-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#AsideOffcanvasSearch" aria-controls="AsideOffcanvasSearch"><i class="pe-7s-search icon"></i></button>
+                  </div>
+                  <div class="shopping-wishlist">
+                    <a class="shopping-wishlist-btn" href="index.php?act=wishlist">
+                      <i class="pe-7s-like icon"></i>
+=======
       <div class="header-middle">
         <div class="container pt--0 pb--0">
           <div class="row align-items-center">
@@ -118,6 +150,7 @@
                     <a href="index.php">
                       <img class="logo-main" src="assets/img/shoes.webp" width="131" height="34" alt="Logo" />
                       <img class="logo-light" src="assets/img/logo-light.webp" width="131" height="34" alt="Logo" />
+>>>>>>> eadad380849e9e65359d29d527a20454ec686f61
                     </a>
                   </div>
                 </div>

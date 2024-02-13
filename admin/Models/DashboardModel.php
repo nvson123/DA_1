@@ -1,6 +1,10 @@
 <?php
 require_once "BaseModel.php";
 
+function selectAllOrder()
+{
+    $sql ="SELECT * FROM orders";
+}
 function selectAllRevenue($dateNow)
 {
     $sql ="SELECT SUM(total_money) AS revenue FROM orders

@@ -79,6 +79,10 @@ switch ($url){
             deleteProduct();
         }
         break;
+    case 'thoat':
+        unset($_SESSION['role']);
+        header('location:../web/index.php');
+        break;
     // case 'update-product':
     //     if(isset($_POST['updateProduct']))
     //     {

@@ -8,6 +8,18 @@ function loadall_products_home()
     $listsanpham = pdo_query($sql);
     return $listsanpham;
 }
+function loadall_product($kyw="", $category_id=0){
+    $sql="select * from product where 1";
+    if($kyw !=""){
+        $sql .= " and name like '%" .$kyw. "%' ";
+    }
+    if($category_id >0){
+        $sql .= " and category_id = '".$category_id."' ";
+    }
+    $sql.=" order by id desc";
+    $listproduct=pdo_query($sql);
+    return $listproduct;
+}
 function loadone_product($id)
 {
     $sql = "select * from product where id = $id";

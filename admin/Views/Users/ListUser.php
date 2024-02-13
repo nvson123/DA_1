@@ -1,6 +1,6 @@
 <div class="main-content">
                 <h3 class="title-page">
-                    Danh mục
+                    User
                 </h3>
                 <table id="example" class="table table-striped" style="width:100%">
                     <thead>
