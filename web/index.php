@@ -117,6 +117,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             break;
 
         case "addToCart":
+          
             if (isset($_POST['addtocart']) && ($_POST['addtocart'])) {
                 $id = $_POST['id'];
                 $name = $_POST['name'];

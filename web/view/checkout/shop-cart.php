@@ -1,9 +1,41 @@
+<?php
+if (!isset($_SESSION['user_info'])) {
+    echo '<script>
+            $(document).ready(function() {
+                var popupDiv = $("<div/>", {
+                    html: "Thông báo cho người dùng: Bạn cần đăng nhập để tiếp tục",
+                    css: {
+                        position: "fixed";
+                        top: "50%",
+                        left: "50%",
+                        transform: "translate(-50%, -50%)",
+                        padding: "20px",
+                        backgroundColor: "#f8d7da",
+                        color: "#721c24",
+                        border: "1px solid #f5c6cb",
+                      
+                    }
+                });
+
+                $("body").append(popupDiv);
+
+                $(".main-content > *").not(popupDiv).css("opacity", "0.5");
+            });
+          </script>';
+}
+?>
+
+
+
 <main class="main-content">
+
+
+
   <!--== Start Page Header Area Wrapper ==-->
   <div class="page-header-area" data-bg-img="assets/img/photos/bg3.webp">
     <div class="container pt--0 pb--0">
       <div class="row">
-        <div class="col-12">
+        <div class="col-12" > 
           <div class="page-header-content">
             <h2 class="title" data-aos="fade-down" data-aos-duration="1000">Shopping Cart</h2>
             <nav class="breadcrumb-area" data-aos="fade-down" data-aos-duration="1200">
@@ -68,40 +100,42 @@
                   <?php
                   //code wrote by nv son and youtube
                   $tong = 0;
-                 $i = 0;
+                  $i = 0;
+
+
                   foreach ($_SESSION['mycart'] as $cart) {
                     $linkSP = "index.php?act=ctsp&id=" . $cart[0];
-                    $hinh = $img_path.$cart[2];
-                    $tong+= $cart[5];
+                    $hinh = $img_path . $cart[2];
+                    $tong += $cart[5];
                     // $xoasp= ' <a  href="index.php?act=delCart&idCart='.$i.'"><i class="fa fa-trash-o"></i></a>';
-                    $xoasp="index.php?act=delCart&idCart=$i";
+                    $xoasp = "index.php?act=delCart&idCart=$i";
                     echo ' 
                     <tr class="cart-product-item">
                     <td class="product-remove">
                       
-                    <a  href="'.$xoasp.'"><i class="fa fa-trash-o"></i></a>
+                    <a  href="' . $xoasp . '"><i class="fa fa-trash-o"></i></a>
                     </td>
                     <td class="product-thumb">
-                      <a href="'.$linkSP.'">
-                        <img src="'.$hinh.'" width="90" height="110" alt="Image-HasTech">
+                      <a href="' . $linkSP . '">
+                        <img src="' . $hinh . '" width="90" height="110" alt="Image-HasTech">
                       </a>
                     </td>
                     <td class="product-name">
-                      <h4 class="title"><a href="'.$linkSP.'">'.$cart[1].'</a></h4>
+                      <h4 class="title"><a href="' . $linkSP . '">' . $cart[1] . '</a></h4>
                     </td>
                     <td class="product-price">
-                      <span class="price">'.$cart[3].'</span>
+                      <span class="price">' . $cart[3] . '</span>
                     </td>
                     <td class="product-quantity">
                       <div class="pro-qty">
-                        <input type="text" class="quantity" title="Quantity" value="'.$cart[4].'">
+                        <input type="text" class="quantity" title="Quantity" value="' . $cart[4] . '">
                       </div>
                     </td>
                     <td class="product-subtotal">
-                      <span class="price">'.$cart[5].'</span>
+                      <span class="price">' . $cart[5] . '</span>
                     </td>
                   </tr> ';
-                  $i+=1;
+                    $i += 1;
                   }
                   ?>
                   <!-- <tr class="cart-product-item">
@@ -254,7 +288,9 @@
                       <p class="value">Subtotal</p>
                     </td>
                     <td>
-                      <p class="price">$<?=$tong ?></p>
+                      <p class="price">$
+                        <?= $tong ?>
+                      </p>
                     </td>
                   </tr>
                   <tr class="shipping">
@@ -283,7 +319,9 @@
                       <p class="value">Total</p>
                     </td>
                     <td>
-                      <p class="price">$<?=$tong ?></p>
+                      <p class="price">$
+                        <?= $tong ?>
+                      </p>
                     </td>
                   </tr>
                 </tbody>
