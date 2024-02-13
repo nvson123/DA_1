@@ -175,7 +175,7 @@
           
           extract($sp);
           $hinh = $img_path . $image;
-          $linkSP = "index.php?act=sanpham&id=" . $id;
+          $linkSP = "index.php?act=ctsp&id=" . $id;
           echo
 
             '<div class="col-sm-6 col-lg-3">
