@@ -15,7 +15,7 @@ if (!isset($_SESSION['mycart'])) {
 ;
 
 $topCategories = loadall_categories();
-$loadProductAll = loadall_products_home();
+// $loadProduct = loadall_products_home();
 
 if (isset($_GET['act']) && ($_GET['act'] != "")) {
     $act = $_GET['act'];

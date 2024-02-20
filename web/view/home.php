@@ -171,7 +171,7 @@
       <div class="row">
       
         <?php
-        foreach ($loadProductAll as $sp) {
+        foreach ($loadProduct as $sp) {
           
           extract($sp);
           $hinh = $img_path . $image;
@@ -204,8 +204,8 @@
               <div class="product-info">
                 <div class="category">
                   <ul>
-                    <li><a href="#">' . $category_name . '</a></li>
-                    <li class="sep">/</li>
+                    <li><a href="#">' . $categoryName . '</a></li>
+                  
                     
                   </ul>
                 </div>

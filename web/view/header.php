@@ -131,8 +131,8 @@
             </div>
             <div class="header-middle-align-center">
               <div class="header-search-area">
-                <form class="header-searchbox">
-                  <input type="search" class="form-control" placeholder="Search">
+                <form class="header-searchbox" action="index.php?act=shop" method="POST">
+                  <input type="search" name="kyw" class="form-control" placeholder="Search">
                   <button class="btn-submit" type="submit"><i class="pe-7s-search"></i></button>
                 </form>
               </div>
