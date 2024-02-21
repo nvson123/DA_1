@@ -50,3 +50,9 @@ function insertVariant($product_id, $size, $color, $quantity)
     $sql = "INSERT INTO product_variant (product_id, size, color, quantity) VALUES ('$product_id','$size','$color','$quantity')";
     getData($sql);
 }
+
+function checkNamePro($name)
+{
+    $sql = "SELECT * FROM product WHERE name = '$name'";
+    return getData($sql);
+}

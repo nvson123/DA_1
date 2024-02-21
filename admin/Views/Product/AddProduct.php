@@ -14,6 +14,11 @@
                         <label for="name">Tên sản phẩm:</label>
                         <input type="text" class="form-control" name="name" id="name" placeholder="Nhập tên sả phẩm">
                     </div>
+                    <?php
+                        echo (!empty($errors['name']['required'])) ?'<span style="color:red" >'.$errors['name']['required'].'</span>':false;
+                        echo (!empty($errors['name']['min'])) ?'<span style="color:red" >'.$errors['name']['min'].'</span>':false;
+                        echo (!empty($errors['name']['exists'])) ?'<span style="color:red" >'.$errors['name']['exists'].'</span>':false;
+                    ?>
                     <div class="form-group">
                         <label for="category">Danh mục:</label>
                         <select class="form-select" aria-label="Default select example" name="category" >
@@ -31,6 +36,11 @@
                             <input type="number" name="discount" id="discount" class="form-control" placeholder="Nhập giá gốc">
                         </div>
                     </div>
+                    <?php
+                        echo (!empty($errors['discount']['required'])) ?'<span style="color:red" >'.$errors['discount']['required'].'</span>':false;
+                        echo (!empty($errors['discount']['min'])) ?'<span style="color:red" >'.$errors['discount']['min'].'</span>':false;
+                        echo (!empty($errors['discount']['exists'])) ?'<span style="color:red" >'.$errors['discount']['exists'].'</span>':false;
+                    ?>
                     <div class="form-group">
                         <label for="price">Giá khuyến mãi:</label>
                         <div class="input-group mb-3">
@@ -41,7 +51,11 @@
                                 placeholder="Giá khuyến mãi">
                         </div>
                     </div>
-                    
+                    <?php
+                        echo (!empty($errors['price']['required'])) ?'<span style="color:red" >'.$errors['price']['required'].'</span>':false;
+                        echo (!empty($errors['price']['min'])) ?'<span style="color:red" >'.$errors['price']['min'].'</span>':false;
+                        echo (!empty($errors['price']['exists'])) ?'<span style="color:red" >'.$errors['price']['exists'].'</span>':false;
+                    ?>
                     <div class="form-group">
                         <label>Mô tả chi tiết:</label>
                         <input class="form-control" name="description" rows="3"

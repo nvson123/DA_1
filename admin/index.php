@@ -8,12 +8,18 @@ require_once 'Controllers/DashboardController.php';
 include "Header.php";
 switch ($url){
     case '/':
-        // if (isset($_POST['listOrderDate']))
-        // {
-        //     listOrderDate();
-        // }
+        if (isset($_POST['listOrderDate']))
+        {
+            listOrderDate();
+        }
         listRevenue();
         break;
+    // case 'list-orderDate':
+    //     if (isset($_POST['listOrderDate']))
+    //     {
+    //         listOrderDate();
+    //     }
+    //     break;
     case 'list-user':
         listUser();
         break;
@@ -23,6 +29,8 @@ switch ($url){
             deleteUser($_GET['id']);
         }
         break;
+    
+
     case 'list-feedback':
         listFeedback();
         break;
@@ -32,6 +40,8 @@ switch ($url){
             deleteFeedback();
         }
         break;
+
+
     case 'list-category':
         listCategory();
         break;
@@ -52,10 +62,12 @@ switch ($url){
         
         if(isset($_POST['updateCategory']))
         {
-            updateCategory($_POST['id'], $_POST['name'], $_POST['description']);
+            updateCategory();
         }
         updateCategoryPage();
         break;
+     
+        
     case 'list-product':
         listProduct();
         break;

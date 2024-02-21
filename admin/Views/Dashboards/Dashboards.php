@@ -85,7 +85,7 @@
                 <section class="row">
                     <div class="col-sm-12 col-md-6 col xl-6">
                         <div class="card chart">
-                            <form action="index.php" method="POST">
+                            <form action="index.php?url=/" method="POST">
                                 <div class="input-group mb-3">
                                     <input type="date" class="form-control" placeholder="Username"
                                         aria-label="Username" name="startDate">
@@ -94,12 +94,19 @@
                                     <button type="submit" class="btn btn-primary" name="listOrderDate" >Xem</button>
                                 </div>
                             </form>
-                            <p>Tổng doanh thu trong 7 ngày qua:
-                                <?php foreach ($weekRevenue as $value){ ?>
-                                <span><?=$value['total_money']?></span>
-                                <?php }?>
+                            <p>Tổng doanh thu trong: <span id="text-date" ></span>
+                               <!-- <select name="select-thongke" id="">
+                                        <option value="week">1 tuần</option>
+                                        <option value="month">1 tháng</option>
+                                        <option value="year">1 năm</option>
+                               </select> qua: -->
+
+                               <!-- <?php foreach ($revenues as $key => $arrayValue ){ ?>                               
+                                        <td><?=$arrayValue['revenue']?></td>
+                                <?php }?> -->
                             </p>
-                            <table class="revenue table table-hover">
+                            <div id="chart" style="height: 250px;"></div>
+                            <!-- <table class="revenue table table-hover">
                                 <thead>
                                     <th>#</th>
                                     <th>Ngày</th>
@@ -109,14 +116,13 @@
                                 <?php foreach ($revenues as $key => $arrayValue ){ ?>
                                     <tr>
                                         <td></td>
-                                        <td><?=$key?></td>
-                                        <?php foreach ($arrayValue as $item =>$value ) {?>
-                                            <td><?= $value['revenue']?></td>
-                                        <?php }?>    
+                                        <td><?=$arrayValue['order_date']?></td>
+                                        <td><?=$arrayValue['revenue']?></td>
                                     </tr>
                                 <?php }?>
                                 </tbody>
-                            </table>
+                            </table> -->
+                            
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-6 col-xl-3">

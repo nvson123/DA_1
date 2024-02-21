@@ -1,10 +1,10 @@
 <?php
 require_once "BaseModel.php";
 
-function selectAllRevenue($dateNow)
+function selectAllRevenue($startDate, $endDate)
 {
-    $sql ="SELECT SUM(total_money) AS revenue FROM orders
-            WHERE DATE(order_date) = '$dateNow'";
+    $sql ="SELECT DATE(order_date) AS order_date, SUM(total_money) AS revenue FROM orders
+            WHERE order_date BETWEEN '$startDate' AND '$endDate' GROUP BY order_date";
     // if(isset($startDate) && isset($endDate))
     // {
     //     $sql.=" WHERE order_date BETWEEN $startDate AND $endDate";
@@ -12,10 +12,10 @@ function selectAllRevenue($dateNow)
     return getData($sql);
 }
 
-function selectWeekRevenue($startDate, $endDate)
+function selectWeekRevenue()
 {
-    $sql ="SELECT SUM(total_money) AS total_money FROM orders
-     WHERE DATE(order_date) BETWEEN '$startDate' AND '$endDate'";
+    $sql ="SELECT DATE(order_date) AS order_date, SUM(total_money) AS revenue FROM orders
+     WHERE order_date >= DATE_SUB(CURRENT_DATE, INTERVAL 7 DAY)";
     return getData($sql);
 }
 

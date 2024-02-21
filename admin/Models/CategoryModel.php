@@ -25,3 +25,8 @@ function updateCate($id, $name, $description)
     $sql = "UPDATE category SET name = '$name', description = '$description' WHERE id = $id";
     return getData($sql);
 }
+function checkNameCate($name)
+{
+    $sql = "SELECT * FROM category WHERE name = '$name'";
+    return getData($sql);
+}
