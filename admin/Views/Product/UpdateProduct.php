@@ -1,22 +1,22 @@
 <div class="main-content">
                 <h3 class="title-page">
-                    Thêm sản phẩm
+                    Update product
                 </h3>
                 
                 <form class="addPro" action="index.php?url=update-product" method="POST" enctype="multipart/form-data">
                     <?php foreach ($product as $pro) { ?>
                     <div class="form-group">
-                        <label for="exampleInputFile">Ảnh sản phẩm</label>
+                        <label for="exampleInputFile">Image:</label>
                         <div class="custom-file">
                             <input type="file" name="image" class="custom-file-input" id="exampleInputFile">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="name">Tên sản phẩm:</label>
+                        <label for="name">Name:</label>
                         <input type="text" class="form-control" name="name" id="name" placeholder="Nhập tên sả phẩm" value="<?=$pro['name']?>" >
                     </div>
                     <div class="form-group">
-                        <label for="category">Danh mục:</label>
+                        <label for="category">Category:</label>
                         <select class="form-select" aria-label="Default select example" name="category" >
                             <?php foreach($categorys as $category) { ?>
                             <option value="<?=$category['id']?>"><?=$category['name']?></option>
@@ -24,7 +24,7 @@
                           </select>
                     </div>
                     <div class="form-group">
-                        <label for="discount">Giá gốc:</label>
+                        <label for="discount">Discount:</label>
                         <div class="input-group mb-3">
                             <div class="input-group-append">
                                 <span class="input-group-text">$</span>
@@ -33,7 +33,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="price">Giá khuyến mãi:</label>
+                        <label for="price">Price:</label>
                         <div class="input-group mb-3">
                             <div class="input-group-append">
                                 <span class="input-group-text">$</span>
@@ -43,7 +43,7 @@
                     </div>
                     
                     <div class="form-group">
-                        <label>Mô tả chi tiết:</label>
+                        <label>Description:</label>
                         <input class="form-control" name="description" rows="3"placeholder="Nhập 1 đoạn mô tả ngắn về sản phẩm" style="height: 78px;" value="<?=$pro['d']?>">
                     </div>
                     <div class="form-group">

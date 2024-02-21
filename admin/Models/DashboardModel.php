@@ -1,7 +1,15 @@
 <?php
 require_once "BaseModel.php";
 
+<<<<<<< HEAD
 function selectAllRevenue($startDate, $endDate)
+=======
+function selectAllOrder()
+{
+    $sql ="SELECT * FROM orders";
+}
+function selectAllRevenue($dateNow)
+>>>>>>> efc69cae9c9cd377f8df0633e2b6cfc07e4e3aa8
 {
     $sql ="SELECT DATE(order_date) AS order_date, SUM(total_money) AS revenue FROM orders
             WHERE order_date BETWEEN '$startDate' AND '$endDate' GROUP BY order_date";

@@ -18,7 +18,7 @@
                           <p class="desc">Up To 30% Off All Shoes & Products</p>
                         </div>
                         <div class="btn-box">
-                          <a class="btn-slider" href="shop.html">Shop Now</a>
+                          <a class="btn-slider" href="index.php?act=shop">Shop Now</a>
                         </div>
                       </div>
                     </div>
@@ -128,7 +128,7 @@
                   <h4 class="price">From $90.00</h4>
                 </div>
               </div>
-              <div class="product-collection-thumb" data-bg-img="../assets/img/shop/collection/2.webp"></div>
+              <div class="product-collection-thumb" data-bg-img="assets/img/shop/collection/2.webp"></div>
               <a class="banner-link-overlay" href="shop.html"></a>
             </div>
           </div>
@@ -171,8 +171,8 @@
       <div class="row">
       
         <?php
-        foreach ($loadProductAll as $sp) {
-
+        foreach ($loadProduct as $sp) {
+          
           extract($sp);
           $hinh = $img_path . $image;
           $linkSP = "index.php?act=ctsp&id=" . $id;
@@ -200,11 +200,12 @@
                 </div>
                 <a class="banner-link-overlay" href="' . $linkSP . '"></a>
               </div>
+              
               <div class="product-info">
                 <div class="category">
                   <ul>
-                    <li><a href="#">' . $category_name . '</a></li>
-                    <li class="sep">/</li>
+                    <li><a href="#">' . $categoryName . '</a></li>
+                  
                     
                   </ul>
                 </div>

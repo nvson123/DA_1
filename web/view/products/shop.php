@@ -63,7 +63,7 @@
                   <div class="row">
                     <?php
                     foreach ($loadProductAll as $sp) {
-
+                     
                       extract($sp);
                       $hinh = $img_path . $image;
                       $linkSP = "index.php?act=ctsp&id=" . $id;
@@ -91,11 +91,11 @@
               </div>
               <div class="product-info">
                 <div class="category">
-                  <ul>
-                    <li><a href="shop.html">' . $category_name . '</a></li>
-                    <li class="sep">/</li>
-                    
-                  </ul>
+                <ul>
+                <li><a href="">' . $categoryName . '</a></li>
+                </ul>
+                
+                
                 </div>
                 <h4 class="title"><a href="single-product.html">' . $name . '</a></h4>
                   <div class="prices">
@@ -155,7 +155,7 @@
                           <div class="product-info">
                             <div class="category">
                               <ul>
-                                <li><a href="shop.html">' . $category_name . '</a></li>
+                                <li><a href="shop.html">' . $categoryName . '</a></li>
                                 <li class="sep">/</li>
                                
                               </ul>
@@ -467,7 +467,7 @@
                   foreach ($topCategories as $top10cate) {
                     extract($top10cate);
                     $linkdm = "index.php?act=dmProducts&iddm=" . $id;
-                    echo '<li><a href="'.$linkdm.'">'.$name.' <span></span></a></li>';
+                    echo '<li><a href="' . $linkdm . '">' . $name . ' <span></span></a></li>';
                   }
 
                   ?>

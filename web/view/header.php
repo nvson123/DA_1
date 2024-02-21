@@ -43,6 +43,27 @@
     <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+
+  <!-- Popper.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+
+  <!-- Bootstrap JS -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
 </head>
 
 <body>
@@ -70,16 +91,16 @@
                         </li>
                         <li class="email"><i class="fa fa-envelope"></i><a
                             href="mailto://demo@example.com">demo@example.com</a></li>
-                        <li class="account"><i class="fa fa-user"></i><a href="index.php?act=account">  
+                        <li class="account"><i class="fa fa-user"></i><a href="index.php?act=account">
                             <?php
 
-                            
-                            if (!isset($_SESSION['user_info'])) { 
-                               echo "Account";
-                               
-                               ?>
-                            <?php }else {
-                             echo ($_SESSION['user_info']['username']);
+
+                            if (!isset($_SESSION['user_info'])) {
+                              echo "Account";
+
+                              ?>
+                            <?php } else {
+                              echo ($_SESSION['user_info']['username']);
                             }
                             ;
 
@@ -94,132 +115,90 @@
           </div>
         </div>
       </div>
-      <div class="header-middle">
-        <div class="container pt--0 pb--0">
-          <div class="row align-items-center">
-            <div class="col-12">
-              <div class="header-middle-align">
-                <div class="header-middle-align-start">
-                  <div class="header-logo-area">
-                    <a href="index.php">
-                      <img class="logo-main" src="assets/img/shoes.webp" width="131" height="34" alt="Logo" />
-                      <img class="logo-light" src="assets/img/logo-light.webp" width="131" height="34" alt="Logo" />
-                    </a>
-                  </div>
+  </div>
+  <div class="header-middle">
+    <div class="container pt--0 pb--0">
+      <div class="row align-items-center">
+        <div class="col-12">
+          <div class="header-middle-align">
+            <div class="header-middle-align-start">
+              <div class="header-logo-area">
+                <a href="index.html">
+                  <img class="logo-main" src="assets/img/shoes.webp" width="131" height="34" alt="Logo" />
+                  <img class="logo-light" src="img/logo-light.webp" width="131" height="34" alt="Logo" />
+                </a>
+              </div>
+            </div>
+            <div class="header-middle-align-center">
+              <div class="header-search-area">
+                <form class="header-searchbox" action="index.php?act=shop" method="POST">
+                  <input type="search" name="kyw" class="form-control" placeholder="Search">
+                  <button class="btn-submit" type="submit"><i class="pe-7s-search"></i></button>
+                </form>
+              </div>
+            </div>
+            <div class="header-middle-align-end">
+              <div class="header-action-area">
+                <div class="shopping-search">
+                  <button class="shopping-search-btn" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#AsideOffcanvasSearch" aria-controls="AsideOffcanvasSearch"><i
+                      class="pe-7s-search icon"></i></button>
                 </div>
-                <div class="header-middle-align-center">
-                  <div class="header-search-area">
-                    <form class="header-searchbox">
-                      <input type="search" class="form-control" placeholder="Search">
-                      <button class="btn-submit" type="submit"><i class="pe-7s-search"></i></button>
-                    </form>
-                  </div>
+                <div class="shopping-wishlist">
+                  <a class="shopping-wishlist-btn" href="shop-wishlist.html">
+                    <i class="pe-7s-like icon"></i>
+                  </a>
                 </div>
-                <div class="header-middle-align-end">
-                  <div class="header-action-area">
-                    <div class="shopping-search">
-                      <button class="shopping-search-btn" type="button" data-bs-toggle="offcanvas"
-                        data-bs-target="#AsideOffcanvasSearch" aria-controls="AsideOffcanvasSearch"><i
-                          class="pe-7s-search icon"></i></button>
-                    </div>
-                    <div class="shopping-wishlist">
-                      <a class="shopping-wishlist-btn" href="index.php?act=wishlist">
-                        <i class="pe-7s-like icon"></i>
-                      </a>
-                    </div>
-                    <div class="shopping-cart">
-                      <button class="shopping-cart-btn" type="button" data-bs-toggle="offcanvas"
-                        data-bs-target="#AsideOffcanvasCart" aria-controls="offcanvasRightLabel">
-                        <i class="pe-7s-shopbag icon"></i>
-                        <sup class="shop-count">02</sup>
-                      </button>
-                    </div>
-                    <button class="btn-menu" type="button" data-bs-toggle="offcanvas"
-                      data-bs-target="#AsideOffcanvasMenu" aria-controls="AsideOffcanvasMenu">
-                      <i class="pe-7s-menu"></i>
-                    </button>
-                  </div>
+                <div class="shopping-cart">
+                  <button class="shopping-cart-btn" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#AsideOffcanvasCart" aria-controls="offcanvasRightLabel">
+                    <i class="pe-7s-shopbag icon"></i>
+                    <sup class="shop-count">02</sup>
+                  </button>
                 </div>
+                <button class="btn-menu" type="button" data-bs-toggle="offcanvas" data-bs-target="#AsideOffcanvasMenu"
+                  aria-controls="AsideOffcanvasMenu">
+                  <i class="pe-7s-menu"></i>
+                </button>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="header-area header-default">
-        <div class="container">
-          <div class="row no-gutter align-items-center position-relative">
-            <div class="col-12">
-              <div class="header-align">
-                <div class="header-navigation-area position-relative">
-                  <ul class="main-menu nav">
-                    <li><a href="index.php"><span>Home</span></a>
-                      <!-- <ul class="submenu-nav">
-                      <li><a href="index.html"><span>Home One</span></a></li>
-                      <li><a href="index-two.html"><span>Home Two</span></a></li>
-                    </ul> -->
-                    </li>
-                    <li><a href="index.php?act=about"><span>About</span></a></li>
-                    <li class="has-submenu"><a href="#/"><span>Pages</span></a>
-                      <ul class="submenu-nav">
-                        <li><a href="index.php?act=account"><span>Account</span></a></li>
-                        <li><a href="index.php?act=login"><span>Login</span></a></li>
-                        <li><a href="index.php?act=dangky"><span>Register</span></a></li>
-                        <!-- <li><a href="page-not-found.html"><span>Page Not Found</span></a></li> -->
-                      </ul>
-                    </li>
-                    <li class="has-submenu position-static"><a href="index.php?act=shop"><span>Shop</span></a>
-                      <ul class="submenu-nav submenu-nav-mega align-items-center justify-content-center ">
-                        <!-- <li class="mega-menu-item"><a href="#/" class="mega-title"><span>Shop Layout</span></a>
-                        <ul>
-                          <li><a href="shop-three-columns.html"><span>Shop 3 Column</span></a></li>
-                          <li><a href="shop-four-columns.html"><span>Shop 4 Column</span></a></li>
-                          <li><a href="shop.html"><span>Shop Left Sidebar</span></a></li>
-                          <li><a href="shop-right-sidebar.html"><span>Shop Right Sidebar</span></a></li>
-                        </ul>
-                      </li>
-                      <li class="mega-menu-item"><a href="#/" class="mega-title"><span>Single Product</span></a>
-                        <ul>
-                          <li><a href="single-normal-product.html"><span>Single Product Normal</span></a></li>
-                          <li><a href="single-product.html"><span>Single Product Variable</span></a></li>
-                          <li><a href="single-group-product.html"><span>Single Product Group</span></a></li>
-                          <li><a href="single-affiliate-product.html"><span>Single Product Affiliate</span></a></li>
-                        </ul>
-                      </li> -->
-                        <li class="mega-menu-item"><a href="#/" class="mega-title"><span>Others Pages</span></a>
-                          <ul>
-                            <li><a href="index.php?act=cart"><span>Shopping Cart</span></a></li>
-                            <li><a href="index.php?act=checkout"><span>Checkout</span></a></li>
-                            <li><a href="index.php?act=wishlist"><span>Wishlist</span></a></li>
-                            <li><a href="index.php?act=bill"><span>Compare</span></a></li>
-                          </ul>
-                        </li>
-                      </ul>
-                    </li>
-                    <li class=""><a href="index.php?act=blog"><span>Blog</span></a>
-                      <!-- <ul class="submenu-nav submenu-nav-mega">
-                      <li class="mega-menu-item"><a href="#/" class="mega-title">Blog Layout</a>
-                        <ul>
-                          <li><a href="blog.html">Blog Grid</a></li>
-                          <li><a href="blog-left-sidebar.html">Blog Left Sidebar</a></li>
-                          <li><a href="blog-right-sidebar.html">Blog Right Sidebar</a></li>
-                        </ul>
-                      </li>
-                      <li class="mega-menu-item"><a href="#/" class="mega-title">Single Blog</a>
-                        <ul>
-                          <li><a href="blog-details-no-sidebar.html">Blog Details</a></li>
-                          <li><a href="blog-details-left-sidebar.html">Blog Details Left Sidebar</a></li>
-                          <li><a href="blog-details.html">Blog Details Right Sidebar</a></li>
-                        </ul>
-                      </li>
-                    </ul> -->
-                    </li>
-                    <li><a href="index.php?act=contact"><span>Contact</span></a></li>
+    </div>
+  </div>
+  <div class="header-area header-default">
+    <div class="container">
+      <div class="row no-gutter align-items-center position-relative">
+        <div class="col-12">
+          <div class="header-align">
+            <div class="header-navigation-area position-relative">
+              <ul class="main-menu nav">
+                <li class=""><a href="index.php"><span>Home</span></a>
+                
+                </li>
+                <li><a href="about-us.html"><span>About</span></a></li>
+                <li class="has-submenu"><a href="#/"><span>Pages</span></a>
+                  <ul class="submenu-nav">
+                    <li><a href="index.php?act=account"><span>Account</span></a></li>
+                    <li><a href="index.php?act=login"><span>Login</span></a></li>
+                    <li><a href="index.php?act=dangky"><span>Register</span></a></li>
+                  
                   </ul>
-                </div>
-              </div>
+                </li>
+                <li class=" position-static"><a href="index.php?act=shop"><span>Shop</span></a>
+               
+                </li>
+                <li class=""><a href="index.php?act=blog"><span>Blog</span></a>
+                
+                </li>
+                <li><a href="index.php?act=contact"><span>Contact</span></a></li>
+              </ul>
             </div>
           </div>
         </div>
       </div>
-    </header>
-    <!--== End Header Wrapper ==-->
+    </div>
+  </div>
+  </header>
+  <!--== End Header Wrapper ==-->

@@ -15,12 +15,30 @@ if (!isset($_SESSION['mycart'])) {
 ;
 
 $topCategories = loadall_categories();
-$loadProductAll = loadall_products_home();
+// $loadProduct = loadall_products_home();
 
 if (isset($_GET['act']) && ($_GET['act'] != "")) {
     $act = $_GET['act'];
     switch ($act) {
+            
+            
         case "shop":
+            //Tìm kiếm sản phẩm
+            if (isset($_POST['kyw']) && ($_POST['kyw'] != "")) {
+                $kyw = $_POST['kyw'];
+            } else {
+                $kyw = "";
+            }
+            //Load danh mục sản phẩm
+            if (isset($_GET['category_id']) && ($_GET['category_id'] > 0)) {
+                $category_id = $_GET['category_id'];
+            } else {
+                $category_id = 0;
+            }
+            $loadProductAll = loadall_product($kyw, $category_id);
+            
+            // $tendm = load_ten_dm($iddm);
+    
             include "view/products/shop.php";
             break;
         case "account":
@@ -45,6 +63,8 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                     header('location:../admin/index.php');
                 } else if (is_array($kq)) {
                     $_SESSION['role'] = $role;
+                    $_SESSION['id'] = $kq['id'];
+                    $_SESSION['user'] = $kq['user'];
                     $_SESSION['user_info'] = array(
                         'id' => $kq['id'],
                         'username' => $kq['username'],
@@ -53,6 +73,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                         'email' => $kq['email'],
                         'phone_number' => $kq['phone_number']
                     );
+
                     header('location:index.php');
                 } else {
                     // $thongbao = "Tài khoản không tổn tại. Vui lòng kiểm tra lại";
@@ -117,6 +138,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             break;
 
         case "addToCart":
+          
             if (isset($_POST['addtocart']) && ($_POST['addtocart'])) {
                 $id = $_POST['id'];
                 $name = $_POST['name'];
@@ -169,8 +191,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             $billCT = loadall_cart($id_bill);
             include "view/checkout/bill.php";
             break;
-
-
+            
         case "myBill":
             if (isset($_GET['idBill']) && ($_GET['idBill'] > 0)) {
                 $listOrder = loadone_order($_GET['idBill']);
@@ -199,7 +220,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
         case "blog":
             include "view/blog/blog.php";
             break;
-
+        
     }
 } else {
 
