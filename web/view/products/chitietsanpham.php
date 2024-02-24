@@ -35,14 +35,14 @@
 
                       <?php
                       extract($product);
-                      
+
                       $hinh = $img_path . $image;
                       ?>
 
 
                       <div class="swiper-slide">
-                        <a class="lightbox-image" data-fancybox="gallery" href="<?=$hinh?>">
-                          <img src="<?=$hinh ?>" width="570" height="541" alt="Image-HasTech">
+                        <a class="lightbox-image" data-fancybox="gallery" href="<?= $hinh ?>">
+                          <img src="<?= $hinh ?>" width="570" height="541" alt="Image-HasTech">
                         </a>
                       </div>
                       <!-- <div class="swiper-slide">
@@ -70,8 +70,7 @@
                   <div class="swiper-container single-product-nav single-product-nav-slider">
                     <div class="swiper-wrapper">
                       <div class="swiper-slide">
-                        <img src="<?=$hinh?>" width="127" height="127"
-                          alt="Image-HasTech">
+                        <img src="<?= $hinh ?>" width="127" height="127" alt="Image-HasTech">
                       </div>
                       <!-- <div class="swiper-slide">
                           <img src="assets/img/shop/product-single/nav-2.webp" width="127" height="127" alt="Image-HasTech">
@@ -93,10 +92,16 @@
               <div class="col-xl-6">
                 <!--== Start Product Info Area ==-->
                 <div class="product-single-info">
-                  <h3 class="main-title"><?=$name?></h3>
+                  <h3 class="main-title">
+                    <?= $name ?>
+                  </h3>
                   <div class="prices">
-                  <span class="price-old" style="text-decoration: line-through" ><?=$price?></span>
-                    <span class="price"><?=$price * (100-$discount)/100?></span>
+                    <span class="price-old" style="text-decoration: line-through">
+                      <?= $price ?>
+                    </span>
+                    <span class="price">
+                      <?= $price * (100 - $discount) / 100 ?>
+                    </span>
                   </div>
                   <div class="rating-box-wrap">
                     <div class="rating-box">
@@ -110,23 +115,51 @@
                       <a href="javascript:void(0)">(5 Customer Review)</a>
                     </div>
                   </div>
-                  <p><?=$description?></p>
+                  <p>
+                    <?= $description ?>
+                  </p>
                   <div class="product-color">
                     <h6 class="title">Color</h6>
                     <ul class="color-list">
-                      <li data-bg-color="#586882"></li>
+                      <!-- <li data-bg-color="#586882"></li>
                       <li class="active" data-bg-color="#505050"></li>
                       <li data-bg-color="#73707a"></li>
-                      <li data-bg-color="#c7bb9b"></li>
+                      <li data-bg-color="#c7bb9b"></li> -->
+
+                      <?php
+                      if (isset($list_variant) && (is_array($list_variant))) {
+                        foreach ($list_variant as $variant) {
+                          extract($variant);
+
+                          echo '<button style="background-color:' . $color . '" class="select-button1 selected1" onclick="selectButton1(this)"></button>';
+
+
+
+
+                        }
+                      }
+                      ?>
                     </ul>
                   </div>
                   <div class="product-size">
                     <h6 class="title">Size</h6>
                     <ul class="size-list">
-                      <li>S</li>
-                      <li class="active">M</li>
-                      <li>L</li>
-                      <li>XL</li>
+
+
+                      <?php
+                      //code này để load biến thể của sản phẩm
+                      if (isset($list_variant) && (is_array($list_variant))) {
+                        foreach ($list_variant as $variant) {
+                          extract($variant);
+                          echo "
+                          <button class=" . 'select-button selected' . " onclick=" . 'selectButton(this)' . ">$size</button>
+                          
+                          ";
+
+                        }
+                      }
+                      ?>
+
                     </ul>
                   </div>
                   <div class="product-quick-action">
@@ -136,14 +169,14 @@
                       </div>
                     </div>
                     <form action="index.php?act=addToCart" method="POST">
-                    <input type="submit" name="addtocart" class="btn-theme" value="Thêm vào giỏ hàng">
-                    <input type="hidden" name="id" value="<?=$id?>">
-                    <input type="hidden"name="name" value="<?=$name?>">
-                    <input type="hidden"name="price" value="<?=$price* (100-$discount)/100?>">
-                    <input type="hidden"name="img" value="<?=$image?>">
-                    <!-- <input type="hidden"name="quantity" value=""> -->
+                      <input type="submit" name="addtocart" class="btn-theme" value="Thêm vào giỏ hàng">
+                      <input type="hidden" name="id" value="<?= $id ?>">
+                      <input type="hidden" name="name" value="<?= $name ?>">
+                      <input type="hidden" name="price" value="<?= $price * (100 - $discount) / 100 ?>">
+                      <input type="hidden" name="img" value="<?= $image ?>">
+                      <!-- <input type="hidden"name="quantity" value=""> -->
                     </form>
-                    
+
                   </div>
                   <div class="product-wishlist-compare">
                     <a href="shop-wishlist.html"><i class="pe-7s-like"></i>Add to Wishlist</a>
@@ -186,12 +219,16 @@
             <div class="tab-content product-tab-content" id="ReviewTabContent">
               <div class="tab-pane fade show active" id="information" role="tabpanel" aria-labelledby="information-tab">
                 <div class="product-information">
-                  <p><?=$description?></p>
+                  <p>
+                    <?= $description ?>
+                  </p>
                 </div>
               </div>
               <div class="tab-pane fade" id="description" role="tabpanel" aria-labelledby="description-tab">
                 <div class="product-description">
-                  <p><?=$description?></p>
+                  <p>
+                    <?= $description ?>
+                  </p>
                 </div>
               </div>
               <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
@@ -388,22 +425,31 @@
           </div>
         </div>
       </div>
+
+      <?php
+      $dmProducts = loadAll_dmProducts($category_id);
+      ?>
       <div class="row">
         <div class="col-12">
           <div class="product-slider-wrap">
             <div class="swiper-container product-slider-col4-container">
               <div class="swiper-wrapper">
-                <div class="swiper-slide">
+                <?php
+                foreach ($dmProducts as $sp) {
+                  extract($sp);
+                  $hinh = $img_path . $image;
+                  $linkSP = "index.php?act=ctsp&id=" . $id;
+                  echo '<div class="swiper-slide">
                   <!--== Start Product Item ==-->
                   <div class="product-item">
                     <div class="inner-content">
                       <div class="product-thumb">
-                        <a href="single-product.html">
-                          <img src="assets/img/shop/1.webp" width="270" height="274" alt="Image-HasTech">
+                        <a href="'.$linkSP.'">
+                          <img src="'.$hinh.'" width="270" height="274" alt="Image-HasTech">
                         </a>
                         <div class="product-flag">
                           <ul>
-                            <li class="discount">-10%</li>
+                            <li class="discount">'.$discount.'</li>
                           </ul>
                         </div>
                         <div class="product-action">
@@ -419,213 +465,25 @@
                       <div class="product-info">
                         <div class="category">
                           <ul>
-                            <li><a href="shop.html">Men</a></li>
-                            <li class="sep">/</li>
-                            <li><a href="shop.html">Women</a></li>
+                            <li><a href="shop.html">'.$category_name.'</a></li>
+                           
                           </ul>
                         </div>
-                        <h4 class="title"><a href="single-product.html">Modern Smart Shoes</a></h4>
+                        <h4 class="title"><a href="single-product.html">'.$name.'</a></h4>
                         <div class="prices">
-                          <span class="price-old">$300</span>
+                          <span class="price-old">$'.$price.'</span>
                           <span class="sep">-</span>
-                          <span class="price">$240.00</span>
+                          <span class="price">$' . ($price * (100 - $discount) / 100) . '</span>
                         </div>
                       </div>
                     </div>
                   </div>
                   <!--== End prPduct Item ==-->
-                </div>
-                <div class="swiper-slide">
-                  <!--== Start Product Item ==-->
-                  <div class="product-item">
-                    <div class="inner-content">
-                      <div class="product-thumb">
-                        <a href="single-product.html">
-                          <img src="assets/img/shop/7.webp" width="270" height="274" alt="Image-HasTech">
-                        </a>
-                        <div class="product-action">
-                          <a class="btn-product-wishlist" href="shop-wishlist.html"><i class="fa fa-heart"></i></a>
-                          <a class="btn-product-cart" href="shop-cart.html"><i class="fa fa-shopping-cart"></i></a>
-                          <button type="button" class="btn-product-quick-view-open">
-                            <i class="fa fa-arrows"></i>
-                          </button>
-                          <a class="btn-product-compare" href="shop-compare.html"><i class="fa fa-random"></i></a>
-                        </div>
-                        <a class="banner-link-overlay" href="shop.html"></a>
-                      </div>
-                      <div class="product-info">
-                        <div class="category">
-                          <ul>
-                            <li><a href="shop.html">Men</a></li>
-                            <li class="sep">/</li>
-                            <li><a href="shop.html">Women</a></li>
-                          </ul>
-                        </div>
-                        <h4 class="title"><a href="single-product.html">Quickiin Mens shoes</a></h4>
-                        <div class="prices">
-                          <span class="price">$240.00</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!--== End prPduct Item ==-->
-                </div>
-                <div class="swiper-slide">
-                  <!--== Start Product Item ==-->
-                  <div class="product-item">
-                    <div class="inner-content">
-                      <div class="product-thumb">
-                        <a href="single-product.html">
-                          <img src="assets/img/shop/3.webp" width="270" height="274" alt="Image-HasTech">
-                        </a>
-                        <div class="product-flag">
-                          <ul>
-                            <li class="discount">-10%</li>
-                          </ul>
-                        </div>
-                        <div class="product-action">
-                          <a class="btn-product-wishlist" href="shop-wishlist.html"><i class="fa fa-heart"></i></a>
-                          <a class="btn-product-cart" href="shop-cart.html"><i class="fa fa-shopping-cart"></i></a>
-                          <button type="button" class="btn-product-quick-view-open">
-                            <i class="fa fa-arrows"></i>
-                          </button>
-                          <a class="btn-product-compare" href="shop-compare.html"><i class="fa fa-random"></i></a>
-                        </div>
-                        <a class="banner-link-overlay" href="shop.html"></a>
-                      </div>
-                      <div class="product-info">
-                        <div class="category">
-                          <ul>
-                            <li><a href="shop.html">Men</a></li>
-                            <li class="sep">/</li>
-                            <li><a href="shop.html">Women</a></li>
-                          </ul>
-                        </div>
-                        <h4 class="title"><a href="single-product.html">Rexpo Womens shoes</a></h4>
-                        <div class="prices">
-                          <span class="price-old">$300</span>
-                          <span class="sep">-</span>
-                          <span class="price">$240.00</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!--== End prPduct Item ==-->
-                </div>
-                <div class="swiper-slide">
-                  <!--== Start Product Item ==-->
-                  <div class="product-item">
-                    <div class="inner-content">
-                      <div class="product-thumb">
-                        <a href="single-product.html">
-                          <img src="assets/img/shop/4.webp" width="270" height="274" alt="Image-HasTech">
-                        </a>
-                        <div class="product-action">
-                          <a class="btn-product-wishlist" href="shop-wishlist.html"><i class="fa fa-heart"></i></a>
-                          <a class="btn-product-cart" href="shop-cart.html"><i class="fa fa-shopping-cart"></i></a>
-                          <button type="button" class="btn-product-quick-view-open">
-                            <i class="fa fa-arrows"></i>
-                          </button>
-                          <a class="btn-product-compare" href="shop-compare.html"><i class="fa fa-random"></i></a>
-                        </div>
-                        <a class="banner-link-overlay" href="shop.html"></a>
-                      </div>
-                      <div class="product-info">
-                        <div class="category">
-                          <ul>
-                            <li><a href="shop.html">Men</a></li>
-                            <li class="sep">/</li>
-                            <li><a href="shop.html">Women</a></li>
-                          </ul>
-                        </div>
-                        <h4 class="title"><a href="single-product.html">Leather Mens Slipper</a></h4>
-                        <div class="prices">
-                          <span class="price">$240.00</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!--== End prPduct Item ==-->
-                </div>
-                <div class="swiper-slide">
-                  <!--== Start Product Item ==-->
-                  <div class="product-item">
-                    <div class="inner-content">
-                      <div class="product-thumb">
-                        <a href="single-product.html">
-                          <img src="assets/img/shop/5.webp" width="270" height="274" alt="Image-HasTech">
-                        </a>
-                        <div class="product-action">
-                          <a class="btn-product-wishlist" href="shop-wishlist.html"><i class="fa fa-heart"></i></a>
-                          <a class="btn-product-cart" href="shop-cart.html"><i class="fa fa-shopping-cart"></i></a>
-                          <button type="button" class="btn-product-quick-view-open">
-                            <i class="fa fa-arrows"></i>
-                          </button>
-                          <a class="btn-product-compare" href="shop-compare.html"><i class="fa fa-random"></i></a>
-                        </div>
-                        <a class="banner-link-overlay" href="shop.html"></a>
-                      </div>
-                      <div class="product-info">
-                        <div class="category">
-                          <ul>
-                            <li><a href="shop.html">Men</a></li>
-                            <li class="sep">/</li>
-                            <li><a href="shop.html">Women</a></li>
-                          </ul>
-                        </div>
-                        <h4 class="title"><a href="single-product.html">Primitive Mens shoes</a></h4>
-                        <div class="prices">
-                          <span class="price-old">$300</span>
-                          <span class="sep">-</span>
-                          <span class="price">$240.00</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!--== End prPduct Item ==-->
-                </div>
-                <div class="swiper-slide">
-                  <!--== Start Product Item ==-->
-                  <div class="product-item">
-                    <div class="inner-content">
-                      <div class="product-thumb">
-                        <a href="single-product.html">
-                          <img src="assets/img/shop/6.webp" width="270" height="274" alt="Image-HasTech">
-                        </a>
-                        <div class="product-flag">
-                          <ul>
-                            <li class="discount">-10%</li>
-                          </ul>
-                        </div>
-                        <div class="product-action">
-                          <a class="btn-product-wishlist" href="shop-wishlist.html"><i class="fa fa-heart"></i></a>
-                          <a class="btn-product-cart" href="shop-cart.html"><i class="fa fa-shopping-cart"></i></a>
-                          <button type="button" class="btn-product-quick-view-open">
-                            <i class="fa fa-arrows"></i>
-                          </button>
-                          <a class="btn-product-compare" href="shop-compare.html"><i class="fa fa-random"></i></a>
-                        </div>
-                        <a class="banner-link-overlay" href="shop.html"></a>
-                      </div>
-                      <div class="product-info">
-                        <div class="category">
-                          <ul>
-                            <li><a href="shop.html">Men</a></li>
-                            <li class="sep">/</li>
-                            <li><a href="shop.html">Women</a></li>
-                          </ul>
-                        </div>
-                        <h4 class="title"><a href="single-product.html">Simple Fabric Shoe</a></h4>
-                        <div class="prices">
-                          <span class="price-old">$300</span>
-                          <span class="sep">-</span>
-                          <span class="price">$240.00</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!--== End prPduct Item ==-->
-                </div>
+                </div>';
+                }
+                ?>
+                
+
               </div>
             </div>
             <!--== Add Swiper Arrows ==-->

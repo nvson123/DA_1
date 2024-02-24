@@ -216,101 +216,6 @@
                       </div>
                     </div>
                   </div>
-                  <!-- <div id="CheckoutBillingAccordion2" class="col-md-12">
-                    <div class="checkout-box" data-margin-bottom="25" data-bs-toggle="collapse"
-                      data-bs-target="#CheckoutTwo" aria-expanded="false" role="toolbar">
-                      <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input visually-hidden"
-                          id="ship-to-different-address">
-                        <label class="custom-control-label" for="ship-to-different-address">Ship to a different
-                          address?</label>
-                      </div>
-                    </div>
-                    <div id="CheckoutTwo" class="collapse" data-margin-top="30"
-                      data-bs-parent="#CheckoutBillingAccordion2">
-                      <div class="row">
-                        <div class="col-md-6">
-                          <div class="form-group">
-                            <label for="f_name2">Full name <abbr class="required" title="required">*</abbr></label>
-                            <input id="f_name2" type="text" class="form-control">
-                          </div>
-                        </div>
-                        <div class="col-md-6">
-                          <div class="form-group">
-                            <label for="l_name2">Last name <abbr class="required" title="required">*</abbr></label>
-                            <input id="l_name2" type="text" class="form-control">
-                          </div>
-                        </div>
-                        <div class="col-md-12">
-                          <div class="form-group">
-                            <label for="com_name2">Company name (optional)</label>
-                            <input id="com_name2" type="text" class="form-control">
-                          </div>
-                        </div>
-                        <div class="col-md-12">
-                          <div class="form-group">
-                            <label for="country2">Country <abbr class="required" title="required">*</abbr></label>
-                            <select id="country2" class="form-control">
-                              <option>Bangladesh</option>
-                              <option>Afghanistan</option>
-                              <option>Albania</option>
-                              <option>Algeria</option>
-                              <option>Armenia</option>
-                              <option>India</option>
-                              <option>Pakistan</option>
-                              <option>England</option>
-                              <option>London</option>
-                              <option>London</option>
-                              <option>China</option>
-                            </select>
-                          </div>
-                        </div>
-                        <div class="col-md-12">
-                          <div class="form-group">
-                            <label for="street-address2-3">Street address <abbr class="required"
-                                title="required">*</abbr></label>
-                            <input id="street-address2-3" type="text" class="form-control"
-                              placeholder="House number and street name">
-                          </div>
-                          <div class="form-group">
-                            <label for="street-address2-2" class="visually-hidden">Street address 2 <abbr
-                                class="required" title="required">*</abbr></label>
-                            <input id="street-address2-2" type="text" class="form-control"
-                              placeholder="Apartment, suite, unit etc. (optional)">
-                          </div>
-                        </div>
-                        <div class="col-md-12">
-                          <div class="form-group">
-                            <label for="town3">Town / City <abbr class="required" title="required">*</abbr></label>
-                            <input id="town3" type="text" class="form-control">
-                          </div>
-                        </div>
-                        <div class="col-md-12">
-                          <div class="form-group">
-                            <label for="district2">District <abbr class="required" title="required">*</abbr></label>
-                            <select id="district2" class="form-control">
-                              <option>Afghanistan</option>
-                              <option>Albania</option>
-                              <option>Algeria</option>
-                              <option>Armenia</option>
-                              <option>India</option>
-                              <option>Pakistan</option>
-                              <option>England</option>
-                              <option>London</option>
-                              <option>London</option>
-                              <option>China</option>
-                            </select>
-                          </div>
-                        </div>
-                        <div class="col-md-12">
-                          <div class="form-group">
-                            <label for="pz-code2">Postcode / ZIP (optional)</label>
-                            <input id="pz-code2" type="text" class="form-control">
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div> -->
                   <div class="col-md-12">
                     <div class="form-group mb--0">
                       <label for="order-notes">Order notes (optional)</label>
@@ -393,7 +298,7 @@
                 </table>
                 <div class="shop-payment-method">
                   <div id="PaymentMethodAccordion">
-                    <div class="card">
+                    <!-- <div class="card">
                       <div class="card-header" id="check_payments">
                         <h5 class="title" data-bs-toggle="collapse" data-bs-target="#itemOne" aria-controls="itemOne"
                           aria-expanded="true">Chuyển khoản ngân hàng trực tiếp</h5>
@@ -404,30 +309,18 @@
                           <p>Chuyển khoản trực tiếp qua ngân hàng</p>
                         </div>
                       </div>
-                    </div>
-                    <!-- <div class="card">
-                    <div class="card-header" id="check_payments2">
-                      <h5 class="title" data-bs-toggle="collapse" data-bs-target="#itemTwo" aria-controls="itemTwo"
-                        aria-expanded="false">Check payments</h5>
-                    </div>
-                    <div id="itemTwo" class="collapse" aria-labelledby="check_payments2"
-                      data-bs-parent="#PaymentMethodAccordion">
-                      <div class="card-body">
-                        <p>Please send a check to Store Name, Store Street, Store Town, Store State / County, Store
-                          Postcode.</p>
-                      </div>
-                    </div>
-                  </div> -->
+                    </div> -->
+               
                     <div class="card">
                       <label for="pttt" class="card-header" id="check_payments3">
                         <input type="radio" name="pttt" value="tienmat"  data-bs-toggle="collapse" data-bs-target="#itemTwo" aria-controls="itemTwo"
-                        aria-expanded="false" >
+                        aria-expanded="false" required>
                      Thanh toán khi nhận hàng </label>
                       <!-- <div class="card-header" id="check_payments3">
                         <h5 class="title" data-bs-toggle="collapse" data-bs-target="#itemTwo" aria-controls="itemTwo"
                           aria-expanded="false">Thanh toán khi nhận hàng</h5>
                       </div> -->
-                      <div id="itemTwo" class="collapse" aria-labelledby="check_payments3"
+                      <div id="itemTwo" class="collapse" aria-labelledby="check_payments2"
                         data-bs-parent="#PaymentMethodAccordion">
                         <div class="card-body">
                           <p>Nhận hàng và thành toán bằng tiền mặt.</p>
@@ -450,7 +343,7 @@
                         </div>
                       </div>
                     </div> -->
-                    <div class="card">
+                    <!-- <div class="card">
                       <div class="card-header" id="check_payments4">
                         <h5 class="title" data-bs-toggle="collapse" data-bs-target="#itemThree" aria-controls="itemTwo"
                           aria-expanded="false">PayPal Express Checkout <img src="assets/img/photos/paypal2.webp"
@@ -459,7 +352,23 @@
                       <div id="itemThree" class="collapse" aria-labelledby="check_payments4"
                         data-bs-parent="#PaymentMethodAccordion">
                         <div class="card-body">
-                          <p>Thanh toán bằng PayPal. Bạn phải có tài khoản PayPal để thanh toán.</p>
+                          <p>Thanh toán bằng VnPay. Bạn phải có tài khoản VnPay để thanh toán.</p>
+                        </div>
+                      </div>
+                    </div> -->
+                    <div class="card">
+                      <label for="pttt" class="card-header" id="check_payments3">
+                        <input type="radio" name="pttt" value="redirect"  data-bs-toggle="collapse" data-bs-target="#itemThree" aria-controls="itemThree"
+                        aria-expanded="false" required>
+                     Vnpay </label>
+                      <!-- <div class="card-header" id="check_payments3">
+                        <h5 class="title" data-bs-toggle="collapse" data-bs-target="#itemTwo" aria-controls="itemTwo"
+                          aria-expanded="false">Thanh toán khi nhận hàng</h5>
+                      </div> -->
+                      <div id="itemThree" class="collapse" aria-labelledby="check_payments2"
+                        data-bs-parent="#PaymentMethodAccordion">
+                        <div class="card-body">
+                          <p>Thanh toán qua VnPay</p>
                         </div>
                       </div>
                     </div>

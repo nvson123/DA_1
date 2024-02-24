@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Toggle Buttons Example</title>
+  <style>
+    .select-button {
+      background-color: #3498db; /* Màu nền mặc định */
+      color: #fff; /* Màu chữ mặc định */
+      cursor: pointer;
+      border: none;
+      padding: 10px 20px;
+      margin: 5px;
+      border-radius: 50%; /* Bo tròn các nút */
+      height: 50px; /* Chiều cao nút */
+      width: 50px; /* Chiều rộng nút */
+    }
+
+    .selected {
+      background-color: #2ecc71; /* Màu nền khi được chọn */
+    }
+
+    .unselected {
+      opacity: 0.5; /* Làm mờ các nút không được chọn */
+    }
+    li.select-option {
+  background-color: #3498db; /* Màu nền mặc định */
+  color: #fff; /* Màu chữ mặc định */
+  cursor: pointer;
+  padding: 10px 20px;
+  margin: 5px;
+  height: 50px; /* Chiều cao nút */
+      width: 50px; /* Chiều rộng nút */
+      border-radius: 50%; /* Bo tròn các nút */
+}
+
+li.selected {
+  background-color: #2ecc71; /* Màu nền khi được chọn */
+}
+
+li.unselected {
+  opacity: 0.5; /* Làm mờ các nút không được chọn */
+}
+
+  </style>
+</head>
+<body>
+
+<button class="select-button selected" onclick="selectButton(this)">Button 1</button>
+<button class="select-button selected" onclick="selectButton(this)">Button 2</button>
+<button class="select-button selected" onclick="selectButton(this)">Button 3</button>
+<button class="select-button selected" onclick="selectButton(this)">Button 4</button>
+
+<ul>
+    <li class="select-option selected" onclick="selectOption(this)"> 1</li>
+    <li class="select-option selected" onclick="selectOption(this)"> 2</li>
+    <li class="select-option selected" onclick="selectOption(this)"> 3</li>
+    <li class="select-option selected" onclick="selectOption(this)"> 4</li>
+  </ul>
+  
+  <script>
+  function selectOption(selectedOption) {
+    var selectedClass = 'selected';
+    var unselectedClass = 'unselected';
+  
+    // Remove the 'selected' class from all options
+    var options = document.querySelectorAll('.select-option');
+    for (var i = 0; i < options.length; i++) {
+      options[i].classList.remove(selectedClass);
+      options[i].classList.add(unselectedClass);
+    }
+  
+    // Add the 'selected' class to the clicked option and remove 'unselected' class
+    selectedOption.classList.add(selectedClass);
+    selectedOption.classList.remove(unselectedClass);
+  }
+  </script>
+  
+<script>
+  function selectButton(selectedButton) {
+    var selectedClass = 'selected';
+    var unselectedClass = 'unselected';
+
+    // Remove the 'selected' class from all buttons
+    var buttons = document.querySelectorAll('.select-button');
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].classList.remove(selectedClass);
+      buttons[i].classList.add(unselectedClass);
+    }
+
+    //
+  }

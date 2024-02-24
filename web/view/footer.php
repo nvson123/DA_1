@@ -139,7 +139,47 @@
 
 <!--=== jQuery Custom Js ===-->
 <script src="assets/js/custom.js"></script>
+<script>
+  function selectButton(selectedButton) {
+    var selectedClass = 'selected';
+    var unselectedClass = 'unselected';
 
+    // Remove the 'selected' class from all buttons
+    var buttons = document.querySelectorAll('.select-button');
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].classList.remove(selectedClass);
+      buttons[i].classList.add(unselectedClass);
+    }
+
+    // Add the 'selected' class to the clicked button and remove 'unselected' class
+    selectedButton.classList.add(selectedClass);
+    selectedButton.classList.remove(unselectedClass);
+
+
+    
+  }
+</script>
+
+  <script>
+ function selectButton1(selectedButton1) {
+    var selectedClass1 = 'selected1';
+    var unselectedClass1 = 'unselected1';
+
+    // Remove the 'selected' class from all buttons
+    var buttons = document.querySelectorAll('.select-button1');
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].classList.remove(selectedClass1);
+      buttons[i].classList.add(unselectedClass1);
+    }
+
+    // Add the 'selected' class to the clicked button and remove 'unselected' class
+    selectedButton1.classList.add(selectedClass1);
+    selectedButton1.classList.remove(unselectedClass1);
+
+
+    
+  }
+</script>
 </body>
 
 

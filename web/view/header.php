@@ -64,6 +64,67 @@
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
 
+
+  <style>
+    .select-button {
+      text-align: center;
+      background-color: #525252;
+      /* Màu nền mặc định */
+      color: white;
+      /* Màu chữ mặc định */
+      cursor: pointer;
+      border: 1px solid #948b8b;
+      padding: 10px 20px;
+      margin: 5px;
+      border-radius: 50%;
+      /* Bo tròn các nút */
+      height: 50px;
+      /* Chiều cao nút */
+      width: 50px;
+      /* Chiều rộng nút */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .selected {
+      border: 1px solid red;
+    }
+
+    .unselected {
+      opacity: 0.5;
+      /* Làm mờ các nút không được chọn */
+    }
+    .select-button1 {
+      text-align: center;
+      background-color: #525252;
+      cursor: pointer;
+      border: 1px solid #948b8b;
+      padding: 10px 20px;
+      margin: 5px;
+      border-radius: 50%;
+      /* Bo tròn các nút */
+      height: 50px;
+      /* Chiều cao nút */
+      width: 50px;
+      /* Chiều rộng nút */
+      
+    }
+
+    .selected1{
+      border: 1px solid red;
+    }
+
+    .unselected1 {
+      opacity: 0.5;
+      /* Làm mờ các nút không được chọn */
+    }
+
+
+   
+
+  
+  </style>
 </head>
 
 <body>
@@ -175,7 +236,7 @@
             <div class="header-navigation-area position-relative">
               <ul class="main-menu nav">
                 <li class=""><a href="index.php"><span>Home</span></a>
-                
+
                 </li>
                 <li><a href="about-us.html"><span>About</span></a></li>
                 <li class="has-submenu"><a href="#/"><span>Pages</span></a>
@@ -183,14 +244,14 @@
                     <li><a href="index.php?act=account"><span>Account</span></a></li>
                     <li><a href="index.php?act=login"><span>Login</span></a></li>
                     <li><a href="index.php?act=dangky"><span>Register</span></a></li>
-                  
+
                   </ul>
                 </li>
                 <li class=" position-static"><a href="index.php?act=shop"><span>Shop</span></a>
-               
+
                 </li>
                 <li class=""><a href="index.php?act=blog"><span>Blog</span></a>
-                
+
                 </li>
                 <li><a href="index.php?act=contact"><span>Contact</span></a></li>
               </ul>

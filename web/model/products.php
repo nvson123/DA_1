@@ -1,14 +1,14 @@
 <?php
 //load tat ca san pham
-// function loadall_products_home()
-// {
+function loadall_products_home()
+{
    
-//     $sql = "SELECT product.*, category.name AS categoryName
-//     FROM product
-//     JOIN category ON product.category_id = category.id";
-//     $listsanpham = pdo_query($sql);
-//     return $listsanpham;
-// }
+    $sql = "SELECT product.*, category.name AS categoryName
+    FROM product
+    JOIN category ON product.category_id = category.id";
+    $listsanpham = pdo_query($sql);
+    return $listsanpham;
+}
 
 
 //load san pham theo tim kiem, Huy thuc hien chuc nang nay
@@ -27,10 +27,10 @@
 
 //load tat ca san pham hoac hien thi san pham theo tim kiem
 function loadall_product($kyw="", $category_id=0){
-    $sql = "SELECT product.*, category.name AS categoryName
-    FROM product
-    JOIN category ON product.category_id = category.id
-    WHERE 1";
+    $sql = "SELECT product.*, category.name AS categoryName, 
+    product_variant.color FROM product 
+    JOIN category ON product.category_id = category.id 
+    LEFT JOIN product_variant ON product.id = product_variant.product_id WHERE 1;";
 
 if ($kyw != "") {
 $sql .= " AND product.name LIKE '%" . $kyw . "%'";
@@ -49,16 +49,24 @@ return $listproduct;
 }
 function loadone_product($id)
 {
-    $sql = "select * from product where id = $id";
+    $sql = "SELECT product.*, product_variant.* FROM product JOIN product_variant ON 
+    product.id = product_variant.product_id
+    
+    where product_id = $id";
     $result = pdo_query_one($sql);
     return $result;
 }
 
 function loadAll_dmProducts($iddm)
 {
-    $sql = "SELECT * FROM product
-    WHERE category_id = $iddm";
+    $sql = "SELECT product.*, category.name AS category_name FROM product INNER JOIN category ON product.category_id = category.id WHERE product.category_id =  $iddm";
     $dmSp = pdo_query($sql);
     return $dmSp;
+}
+
+function load_variant( $id ){
+   $sql = "SELECT * FROM `product_variant` WHERE product_id = $id;";
+   $list_variant = pdo_query($sql);
+   return $list_variant;
 }
 ?>
