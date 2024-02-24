@@ -54,6 +54,10 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             include "view/account/account.php";
             break;
         case "login":
+            if (isset($_SESSION['user_info'])) {
+                header('Location: index.php?act=account');  ;
+
+            }
             if (isset($_POST['login']) && ($_POST['login'])) {
                 $username = $_POST['username'];
                 $password = $_POST['password'];

@@ -449,8 +449,8 @@
                         </a>
                         <div class="product-flag">
                           <ul>
-                            <li class="discount">'.$discount.'</li>
-                          </ul>
+                            <li class="discount">'.$discount.'%</li>
+                          </ul>       
                         </div>
                         <div class="product-action">
                           <a class="btn-product-wishlist" href="shop-wishlist.html"><i class="fa fa-heart"></i></a>
