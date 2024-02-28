@@ -1,10 +1,24 @@
 <div class="dangnhap">
 
-    <form action="index.php?act=quenmk" method="post">
+<form action="index.php?act=quenmk" method="post">
     <h3>Lấy lại mật khẩu</h3>
     <div>
-      <input type="email" placeholder="  Email" name="email">
+      <input type="text" placeholder="  Email" name="email">
     </div>
+             <?php 
+                  if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                      if (empty($_POST["email"])) {
+                          echo "<span style='color:red;'> Email bắt buộc phải nhập.</span>";
+                      } else {
+                          $email = $_POST["email"];
+                          if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                              echo "<span style='color:red;'> Email không đúng đinh dạng.</span>";
+                          } else {
+                              echo ('');
+                          }
+                      }
+                  }
+              ?>
     
     <!-- <div class="submit">
       <input type="submit" value="Gửi email" name="guiemail">
@@ -121,21 +135,21 @@
     
   }
   .submit input{
-    background-color: black;
-    color: white;
-  }
-  .khac input:hover{
     background-color: white;
     color: black;
   }
-  
+  .khac input:hover{
+    background-color: red;
+    color: white;
+  }
+
   .reset input{
     background-color: white;
     color: black;
     
   }
   .reset input:hover{
-    background-color: black;
+    background-color: red;
     color: white;
   }
   

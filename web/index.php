@@ -89,16 +89,35 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             break;
         case "dangky":
             if (isset($_POST['dangky']) && ($_POST['dangky'])) {
-                $username = $_POST['username'];
-                $email = $_POST['email'];
-                $password = $_POST['password'];
-                $address = $_POST['address'];
-                $phone_number = $_POST['phone_number'];
-
-                insert_taikhoan($username, $email, $password, $address, $phone_number);
-                $thongbao = "Đã đăng ký thành công.";
-
-            }
+            
+                $email = $_POST["email"];
+                $username = $_POST["username"];
+                $password = $_POST["password"];
+                $fullname = $_POST["fullname"];
+                $phone_number = $_POST["phone_number"];
+                if (!preg_match("/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/", $email) ||
+                    !preg_match('/^[a-zA-Z0-9_-]+$/', $username) ||
+                    (strlen($password) < 8) ||
+                    !preg_match("/^[a-zA-Z ]*$/",$fullname) ||
+                    (strlen($phone_number) < 10 || strlen($phone_number) > 15)
+                    ) {
+                    
+                }
+                else{
+                    $username = $_POST['username'];
+                    $email = $_POST['email'];
+                    $fullname = $_POST['fullname'];
+                    $password = $_POST['password'];
+                    $address = $_POST['address'];
+                    $phone_number = $_POST['phone_number'];
+    
+                    insert_taikhoan($username, $email,$fullname, $password, $address, $phone_number);
+                    echo  "<p style='text-align:center;'>Đã đăng ký thành công.</p>";
+                }
+                    
+                    
+                }
+                
             include "view/account/dangky.php";
             break;
         case "logout":
@@ -115,7 +134,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             if (isset($_POST['guiemail']) && ($_POST['guiemail'])) {
                 $email = $_POST['email'];
                 $checkemail = checkemail($email);
-                //$thongbao="Cập nhật thành công";
+                    //$thongbao="Cập nhật thành công";
                 if (is_array($checkemail)) {
                     $thongbao = "Mật khẩu của bạn là: " . $checkemail['password'];
                 } else {
